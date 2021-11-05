@@ -1,0 +1,10 @@
+{
+  "name": "@matteusan/himig",
+  "version": "0.1.0",
+  "description": "MatteuSan's personal design system implementation.",
+  "main": "index.js",
+  "repository": "https://github.com/MatteuSan/himig",
+  "author": "Matteu",
+  "license": "MIT",
+  "private": false
+}
