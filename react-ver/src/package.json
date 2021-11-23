@@ -1,6 +1,6 @@
 {
   "name": "@matteusan/himig-react",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha",
   "description": "MatteuSan's personal design system's react implementation.",
   "main": "index.js",
   "repository": "https://github.com/MatteuSan/himig",
