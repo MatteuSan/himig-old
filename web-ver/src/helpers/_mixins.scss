@@ -1,0 +1,25 @@
+@use 'sass:map';
+
+$breakpoints: (
+    'small': 320px,
+    'medium': 540px,
+    'large': 877px
+);
+
+@mixin breakpoint($query, $context: 'min') {
+    @media (#{$context}-width: _sanitize-breakpoint($query, $context)) {
+        @content;
+    }
+}
+
+@function _sanitize-breakpoint($query, $context: 'min') {
+    @if not $context == 'min' or not $context == 'max' {
+        @error 'Invalid context: #{$context}! Please select between min and max only!';
+    }
+    
+    @if $context == 'max' {
+        @return map.get($breakpoints, $query) - 1px;
+    }
+    
+    @return map.get($breakpoints, $query);
+}

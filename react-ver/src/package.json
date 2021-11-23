@@ -1,7 +1,7 @@
 {
-  "name": "@matteusan/himig",
+  "name": "@matteusan/himig-react",
   "version": "0.1.0",
-  "description": "MatteuSan's personal design system implementation.",
+  "description": "MatteuSan's personal design system's react implementation.",
   "main": "index.js",
   "repository": "https://github.com/MatteuSan/himig",
   "author": "Matteu",
