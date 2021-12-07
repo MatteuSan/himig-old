@@ -19,12 +19,16 @@
 //  SOFTWARE.
 //
 
-@use 'color-utils';
+@use '../hc-core';
 
-@function split($color) {
-    @return (
-        'light': color-utils.tint($color, 30%),
-        'default': $color,
-        'dark': color-utils.shade($color, 45%),
-    );
+@mixin override(
+    $fill,
+    $ink,
+    $border: $fill,
+    $shadow: ()
+) {
+    @include hc-core.theme-key-bind('tag-fill', hc-core.theme-token-switch('color', $fill));
+    @include hc-core.theme-key-bind('tag-ink', hc-core.theme-token-switch('color', $ink));
+    @include hc-core.theme-key-bind('tag-border', hc-core.theme-token-switch('color', $border));
+    @include hc-core.theme-key-bind('tag-shadow', hc-core.theme-token-switch('color', $shadow));
 }
