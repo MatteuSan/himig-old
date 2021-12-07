@@ -1,0 +1,168 @@
+//
+//  Copyright (c) 2021 Matteu
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//
+
+@use '../hc-core';
+
+$card-fill: 'surface' !default;
+$card-ink: 'surface-ink' !default;
+$card-radius: 'radius-medium' !default;
+
+$card-shadow: 'surface-dark' !default;
+
+$card-title-size: hc-core.tools-px-to-rem(26px) !default;
+$card-title-icon-ink: 'accent' !default;
+$card-title-icon-size: hc-core.tools-px-to-rem(22px) !default;
+
+$card-subtitle-size: hc-core.tools-px-to-rem(15px) !default;
+
+$card-style: 'simple' !default;
+
+@mixin use() {
+    @if hc-core.struct-is-style($card-style) {
+        .hc-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            width: 100%;
+            margin: 0;
+            border: none !important;
+            border-radius: hc-core.theme-key-create('card-radius', hc-core.theme-token-switch('number', $card-radius));
+            @include hc-core.tools-prefix(transition, all 0.1s ease);
+            
+            @if $card-style == 'playful' {
+                box-shadow: 0 3px hc-core.theme-key-create('card-shadow', hc-core.theme-token-switch('color', $card-shadow));
+                
+                @include hc-core.helper-breakpoint('large') {
+                    &:hover {
+                        transform: translateY(-0.3rem);
+            
+                        @media (prefers-reduced-motion) {
+                            transform: translateY(0);
+                        }
+                    }
+                }
+            }
+            
+            .hc-card__media {
+                width: 100%;
+                height: 100%;
+                max-height: 140px !important;
+                overflow-y: hidden;
+                user-select: none;
+                
+                img {
+                    width: 100%;
+                    height: auto !important;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                }
+            }
+            
+            .hc-card__content {
+                height: 100%;
+                min-height: 174px;
+                max-height: max-content;
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: space-between;
+                padding: 1rem;
+                overflow: hidden;
+                background-color: hc-core.theme-key-create('card-fill', hc-core.theme-token-switch('color', $card-fill));
+                color: hc-core.theme-key-create('card-ink', hc-core.theme-token-switch('color', $card-ink));
+                border-radius: 0 0 hc-core.theme-token-switch('number', $card-radius) hc-core.theme-token-switch('number', $card-radius);
+                
+                .hc-card__title {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 0.3rem;
+                    
+                    h1,
+                    h2,
+                    h3 {
+                        color: inherit;
+                        font-size: hc-core.theme-key-create('card-title-text-size', $card-title-size);
+                        line-height: 1.75rem;
+                    }
+                    
+                    .hc-card__title__icon {
+                        font-size: hc-core.theme-key-create('card-title-icon-size', $card-title-icon-size);
+                        margin-bottom: 0.175rem;
+                        margin-right: 0.5rem;
+                        color: hc-core.theme-key-create('card-title-icon-ink', hc-core.theme-token-switch('color', $card-title-icon-ink));
+                        user-select: none;
+                    }
+                }
+                
+                .hc-card__tags {
+                    display: flex;
+                    flex-flow: row wrap;
+                    overflow-x: scroll;
+                    margin: 0.3rem 0 0.5rem 0;
+                    gap: 0.3rem;
+                    
+                    // Mozilla //
+                    scrollbar-width: none;
+                    
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                }
+                
+                .hc-card__subtitle {
+                    font-size: hc-core.theme-key-create('card-subtitle-text-size', $card-subtitle-size);
+                    color: inherit;
+                    word-break: break-word;
+                    overflow: hidden;
+                    text-align: left;
+                    line-height: 1.25rem;
+                }
+                
+                .hc-card__actions {
+                    display: flex;
+                    justify-content: flex-end;
+                    position: relative;
+                    margin-top: 1em;
+                    
+                    & > * + * {
+                        margin-left: 0.5rem;
+                    }
+                    
+                    a {
+                        width: max-content !important;
+                        
+                        .hc-button {
+                            width: max-content !important;
+                            height: max-content !important;
+                            padding: 0.3rem 0.5rem;
+                            
+                            &.hc-button--outlined,
+                            &.hc-button--filled {
+                                &.hc-button--icon {
+                                    padding: 0.5rem;
+                                    border-radius: 50%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

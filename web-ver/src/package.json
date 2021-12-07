@@ -1,6 +1,6 @@
 {
   "name": "@matteusan/himig-web",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0-beta",
   "description": "MatteuSan's personal design system's web implementation.",
   "main": "index.js",
   "repository": "https://github.com/MatteuSan/himig",
@@ -8,6 +8,6 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@matteusan/sentro": "0.1.7"
+    "@matteusan/sentro": "0.1.10"
   }
 }

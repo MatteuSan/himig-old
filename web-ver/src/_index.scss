@@ -42,51 +42,60 @@
 //  SOFTWARE.
 //
 
-@use '~@matteusan/sentro' with ($prefix: 'hc', $context: 'theme');
+@use 'sass:map';
+@use 'sass:list';
 
-@forward 'hc-header';
-@forward 'hc-navbar';
-@forward 'hc-footer';
-@forward 'hc-hero';
-@forward 'hc-button';
-@forward 'hc-card';
-@forward 'hc-tag';
-@forward 'hc-title-bar';
+@use 'hc-core';
+@forward 'hc-core';
 
-@mixin init() {
+$_init-colors: (
+    'background': (#101010, #fff),
+    'surface': (#343434, #fff),
+    'accent': (#ff6a00, #1d0c02),
+    'accent-inverted': (#210c00, #ff6a00)
+);
+
+$_init-shapes: (
+    'radius': (0.3rem, 0.5rem, 0.7rem)
+);
+
+@mixin init(
+    $colors: (),
+    $shapes: (),
+    $user-tokens...
+) {
+    $_merged-colors: map.merge($_init-colors, $colors
+    );
+    $_merged-shapes: map.merge($_init-shapes, $shapes);
+    
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
     
     :root {
         color-scheme: dark;
-        @include sentro.token-add(
+        @include hc-core.theme-token-add(
             $background: (
-                'default': #181818,
-                'ink': #fff
+                'default': list.nth(map.get($_merged-colors, 'background'), 1),
+                'ink': list.nth(map.get($_merged-colors, 'background'), 2)
             ),
             $surface: (
-                'default': #343434,
-                'dark': #232323,
-                'light': #454545,
-                'ink': #fff
+                'default': hc-core.color-split(list.nth(map.get($_merged-colors, 'surface'), 1)),
+                'ink': list.nth(map.get($_merged-colors, 'surface'), 2)
             ),
             $accent: (
-                'default': #ff6a00,
-                'dark': #903a00,
-                'light': #ffa040,
-                'ink': #1d0c02,
-                'gradient': linear-gradient(45deg, #c43e00 0%, #ffa040 100%)
+                'default': hc-core.color-split(list.nth(map.get($_merged-colors, 'accent'), 1)),
+                'ink': list.nth(map.get($_merged-colors, 'accent'), 2),
+                'gradient': linear-gradient(45deg, 0% #{hc-core.theme-token-get('accent-dark')}, 100%, #{hc-core.theme-token-get('accent-light')})
             ),
             $accent-inverted: (
-                'default': #210c00,
-                'dark': #100500,
-                'light': #401d00,
-                'ink': #ff6a00,
+                'default': hc-core.color-split(list.nth(map.get($_merged-colors, 'accent-inverted'), 1)),
+                'ink': list.nth(map.get($_merged-colors, 'accent-inverted'), 2),
+                'gradient': linear-gradient(45deg, 0% #{hc-core.theme-token-get('accent-inverted-dark')}, 100%, #{hc-core.theme-token-get('accent-inverted-light')})
             ),
             $radius: (
-                'small': 0.3rem,
-                'medium': 0.5rem,
-                'large': 0.7rem
+                'small': list.nth(map.get($_merged-shapes, 'radius'), 1),
+                'medium': list.nth(map.get($_merged-shapes, 'radius'), 1),
+                'large': list.nth(map.get($_merged-shapes, 'radius'), 1)
             ),
             $global: (
                 'family': ('Inter', sans-serif),
@@ -95,7 +104,8 @@
             $title: (
                 'family': ('Bebas Neue', sans-serif),
                 'weight': normal
-            )
+            ),
+            $user-tokens...
         );
     }
     
@@ -104,8 +114,8 @@
         margin: 0;
         padding: 0;
         color: inherit;
-        font-family: sentro.token-get('global-family');
-        font-weight: sentro.token-get('global-weight');
+        font-family: hc-core.theme-token-get('global-family');
+        font-weight: hc-core.theme-token-get('global-weight');
         
         &::before,
         &::after {
@@ -113,21 +123,29 @@
             margin: 0;
             padding: 0;
             color: inherit;
+            font-family: hc-core.theme-token-get('global-family');
+            font-weight: hc-core.theme-token-get('global-weight');
         }
     }
     
     h1,
     h2,
     h3 {
-        font-family: sentro.token-get('title-family');
-        font-weight: sentro.token-get('title-weight');
-        // font-weight: normal;
+        font-family: hc-core.theme-token-get('title-family');
+        font-weight: hc-core.theme-token-get('title-weight');
     }
     
     html {
+        width: 100%;
+        height: 100%;
         box-sizing: border-box;
         font-size: 100%;
         scroll-behavior: smooth;
+    }
+    
+    body {
+        background: hc-core.theme-token-get('background');
+        color: hc-core.theme-token-get('background-ink');
     }
     
     @content;

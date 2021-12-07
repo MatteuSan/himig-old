@@ -1,0 +1,271 @@
+//
+//  Copyright (c) 2021 Matteu
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//
+
+@use '../hc-core';
+
+$button-width: max-content;
+$button-padding: 0.4rem 0.6rem;
+$button-gap: 0.3rem !default;
+
+$button-fill: 'accent' !default;
+$button-fill-active: 'accent-light' !default;
+$button-fill-disabled: 'accent-dark' !default;
+
+$button-ink: 'accent-ink' !default;
+
+$button-border: $button-fill !default;
+$button-border-active: $button-fill-active !default;
+$button-border-disabled: $button-fill-disabled !default;
+
+$button-shadow: 'accent-dark' !default;
+$button-shadow-disabled: #441800 !default;
+
+$button-radius: 'radius-small' !default;
+$button-label-size: hc-core.tools-px-to-rem(16px) !default;
+$button-icon-size: hc-core.tools-px-to-rem(24px) !default;
+$button-icon-ink: inherit !default;
+
+$button-style: 'simple' !default;
+
+@mixin use() {
+    @if hc-core.struct-is-style($button-style) {
+        .hc-button {
+            width: 100%;
+            min-width: 90px;
+            max-width: hc-core.theme-key-create('button-width', $button-width);
+        
+            display: inline-flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+        
+            padding: hc-core.theme-key-create('button-padding', $button-padding);
+            box-sizing: border-box;
+            @include hc-core.tools-prefix(transition, all 0.1s ease);
+        
+            background: hc-core.theme-key-create('button-fill', rgba(0 0 0 / 0));
+            color: hc-core.theme-key-create('button-ink', hc-core.theme-token-switch('color', $button-fill));
+            border: 1px solid hc-core.theme-key-create('button-border', rgba(0 0 0 / 0));
+            
+            @if $button-style == 'playful' {
+                box-shadow: 0 3px hc-core.theme-key-create('button-shadow', rgba(0 0 0 / 0));
+            }
+        
+            border-radius: hc-core.theme-key-create('button-radius', hc-core.theme-token-switch('number', $button-radius));
+        
+            user-select: none;
+            line-height: 1.25rem;
+            overflow: visible;
+            vertical-align: middle;
+            cursor: pointer;
+        
+            & > * + * {
+                margin-left: hc-core.theme-key-create('button-gap', $button-gap);
+            }
+        
+            &::-moz-focus-inner {
+                padding: 0;
+                border: 0;
+            }
+            
+            &:hover,
+            &:focus {
+                @include hc-core.theme-key-bind('button-fill', rgba(255 255 255 / 10%));
+                
+                @if $button-style == 'simple' {
+                    @include hc-core.theme-key-bind('button-border', rgba(255 255 255 / 1%));
+                }
+                
+                @if $button-style == 'playful' {
+                    @include hc-core.theme-key-bind('button-border', rgba(255 255 255 / 10%));
+                    @include hc-core.theme-key-bind('button-shadow', rgba(255 255 255 / 23%));
+                }
+            }
+        
+            &:active {
+                @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill-active));
+                
+                @if $button-style == 'playful' {
+                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill-active));
+                    transform: translateY(3px);
+                    box-shadow: 0 0 hc-core.theme-key-create('button-shadow', rgba(255 255 255 / 23%));
+                }
+            }
+            
+            &:disabled,
+            &.disabled {
+                @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill-disabled));
+                cursor: default;
+                
+                &:hover {
+                    @include hc-core.theme-key-bind('button-fill', rgba(0 0 0 / 0));
+                    @include hc-core.theme-key-bind('button-border', rgba(0 0 0 / 0));
+                    @include hc-core.theme-key-bind('button-shadow', rgba(0 0 0 / 0));
+                }
+                
+                &:active {
+                    transform: none;
+                }
+            }
+        
+            .hc-button__icon {
+                position: relative;
+                font-size: hc-core.theme-key-create('button-icon-size', $button-icon-size);
+                color: hc-core.theme-key-create('button-icon-ink', $button-icon-ink);
+                /* @fallback */
+                width: hc-core.theme-key-create('button-icon-size', $button-icon-size);
+                height: hc-core.theme-key-create('button-icon-size', $button-icon-size);
+            }
+        
+            .hc-button__label {
+                font-size: hc-core.theme-key-create('button-label-size', $button-label-size);
+                color: hc-core.theme-key-create('button-label-ink', inherit);
+                line-height: inherit;
+                font-weight: 700;
+                text-align: left;
+            }
+        
+            // Variants
+            &.hc-button--inverted {
+                @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-get('accent-inverted'));
+                @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-get('accent-inverted-ink'));
+                @include hc-core.theme-key-bind('button-border', hc-core.theme-token-get('accent-inverted'));
+                
+                &:active {
+                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-get('accent-inverted-light'));
+                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-get('accent-inverted-light'));
+                }
+            }
+        
+            &.hc-button--outlined {
+                background: hc-core.theme-key-create('button-fill', rgba(0 0 0 / 0));
+                color: hc-core.theme-key-create('button-ink', hc-core.theme-token-switch('color', $button-fill));
+                border-color: hc-core.theme-key-create('button-border', hc-core.theme-token-switch('color', $button-border));
+                
+                @if $button-style == 'playful' {
+                    box-shadow: 0 3px hc-core.theme-key-create('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                }
+            
+                &:hover,
+                &:focus {
+                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill));
+                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-ink));
+                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border));
+                    @include hc-core.theme-key-bind('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                }
+            
+                &:active {
+                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill-active));
+                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-ink));
+                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-active));
+                    
+                    @if $button-style == 'playful' {
+                        box-shadow: 0 0 hc-core.theme-key-create('button-shadow', $button-shadow);
+                        transform: translateY(2px);
+                    }
+                }
+            
+                &:disabled,
+                &.disabled {
+                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill-disabled));
+                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-disabled));
+                    background: rgba(0 0 0 / 0);
+                    
+                    @if $button-style == 'playful' {
+                        @include hc-core.theme-key-bind('button-shadow', hc-core.theme-token-switch('color', $button-shadow-disabled));
+                    }
+    
+                    &:active {
+                        @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-disabled));
+                        
+                        @if $button-style == 'playful' {
+                            box-shadow: 0 3px hc-core.theme-key-create('button-shadow', hc-core.theme-token-switch('color', $button-shadow-disabled));
+                            transform: none;
+                        }
+                    }
+                }
+            }
+        
+            &.hc-button--filled {
+                background: hc-core.theme-key-create('button-fill', hc-core.theme-token-switch('color', $button-fill));
+                color: hc-core.theme-key-create('button-ink', hc-core.theme-token-switch('color', $button-ink));
+                border-color: hc-core.theme-key-create('button-border', hc-core.theme-token-switch('color', $button-border));
+                
+                @if $button-style == 'playful' {
+                    box-shadow: 0 3px hc-core.theme-key-create('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                }
+                
+                &:hover,
+                &:focus {
+                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill));
+                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-ink));
+                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border));
+                    @include hc-core.theme-key-bind('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                }
+            
+                &:active {
+                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill-active));
+                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-ink));
+                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-active));
+                    
+                    @if $button-style == 'playful' {
+                        box-shadow: 0 0 hc-core.theme-key-create('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                        transform: translateY(2px);
+                    }
+                }
+            
+                &:disabled {
+                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill-disabled));
+                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-ink));
+                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-disabled));
+                    
+                    @if $button-style == 'playful' {
+                        @include hc-core.theme-key-bind('button-shadow', hc-core.theme-token-switch('color', $button-shadow-disabled));
+                    }
+                
+                    &:active {
+                        @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill-disabled));
+                        @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-disabled));
+                        
+                        @if $button-style == 'playful' {
+                            box-shadow: 0 3px hc-core.theme-key-create('button-shadow', hc-core.theme-token-switch('color', $button-shadow-disabled));
+                            transform: none;
+                        }
+                    }
+                }
+            }
+        }
+        
+        a.hc-button--link {
+            display: inline-block;
+            line-height: 1.25rem;
+            color: hc-core.theme-key-create('button-ink', hc-core.theme-token-switch('color', $button-fill));
+            text-decoration: underline;
+            @include hc-core.tools-prefix(transition, all 0.1s ease);
+            
+            &:hover {
+                @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill-active));
+                
+                @if $button-style == 'playful' {
+                    text-decoration-style: wavy;
+                }
+            }
+        }
+    }
+}

@@ -1,21 +1,24 @@
 {
-  "name": "@matteusan/himig-web",
-  "version": "0.1.0-alpha",
-  "description": "MatteuSan's personal design system implementation.",
-  "main": "index.js",
-  "repository": "https://github.com/MatteuSan/himig",
-  "author": "Matteu",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "@matteusan/sentro": "0.1.7"
-  },
-  "devDependencies": {
-    "cssnano": "5.0.10",
-    "gulp": "4.0.2",
-    "gulp-cli": "2.3.0",
-    "gulp-postcss": "9.0.1",
-    "gulp-sass": "5.0.0"
-  }
+    "name": "@matteusan/himig-web",
+    "version": "0.1.0-beta",
+    "description": "MatteuSan's personal design system implementation.",
+    "main": "index.js",
+    "repository": "https://github.com/MatteuSan/himig",
+    "author": "Matteu",
+    "license": "MIT",
+    "private": false,
+    "dependencies": {
+        "@matteusan/sentro": "0.1.10"
+    },
+    "scripts": {
+        "build:sass": "gulp"
+    },
+    "devDependencies": {
+        "cssnano": "5.0.10",
+        "gulp": "4.0.2",
+        "gulp-cli": "2.3.0",
+        "gulp-postcss": "9.0.1",
+        "gulp-sass": "5.0.0"
+    }
 }
 

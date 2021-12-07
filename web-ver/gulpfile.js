@@ -26,9 +26,9 @@ function sassTaskProd() {
 }
 
 function sassTaskTest() {
-    return src('test/**/*.scss', {sourcemaps: true})
+    return src('tests/**/*.scss', {sourcemaps: true})
         .pipe(sass().on('error', sass.logError))
-        .pipe(dest('./test', {sourcemaps: '.'}));
+        .pipe(dest('./tests', {sourcemaps: '.'}));
 }
 
 /*function tsTask() {
@@ -46,10 +46,10 @@ function watchTask() {
 }
 
 exports.default = series(
-    sassTaskDev,
+    // sassTaskDev,
     // sassTaskDevTests,
     sassTaskTest,
-    sassTaskProd,
+    // sassTaskProd,
     // tsTask, // tsTask() disabled on default until we find a fix for this [DEV]
     // watchTask
 );
