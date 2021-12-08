@@ -23,22 +23,23 @@
 
 import React from 'react';
 
-interface HCFooterProps {
-    title: string;
-    version?: string|number;
-    author?: string;
+interface HCNavbarItemProps {
+    label?: string;
+    link: string;
 }
 
-const HCFooter: React.FC<HCFooterProps> = ({ title, version, author }) => {
+export const HCNavbar: React.FC = ({ children }) => {
     return (
-        <footer className="hc-footer">
-            <h3 className="hc-footer__title">
-                { title }
-                { version && <span className="hc-footer__version">v{ version }</span> }
-            </h3>
-            <p className="hc-footer__copyright">Copyright &copy; { new Date().getFullYear() } - { author }</p>
-        </footer>
+        <nav className="hc-navbar">
+            { children }
+        </nav>
     );
 };
 
-export default HCFooter;
+export const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) => {
+    return (
+        <a href={ link }>
+            <span className="hc-navbar__item">{ label || children }</span>
+        </a>
+    );
+}

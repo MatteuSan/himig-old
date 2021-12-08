@@ -21,24 +21,29 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 
-interface HCFooterProps {
+interface HCHeaderProps {
     title: string;
-    version?: string|number;
-    author?: string;
+    actionSection?: Component;
+    isScrollable?: boolean;
 }
 
-const HCFooter: React.FC<HCFooterProps> = ({ title, version, author }) => {
+const HCHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable }) => {
     return (
-        <footer className="hc-footer">
-            <h3 className="hc-footer__title">
-                { title }
-                { version && <span className="hc-footer__version">v{ version }</span> }
-            </h3>
-            <p className="hc-footer__copyright">Copyright &copy; { new Date().getFullYear() } - { author }</p>
-        </footer>
+        <header className={`hc-header${ isScrollable ? ' hc-header--scrollable' : '' }`}>
+            <div className="hc-header__brand">
+                <a href="/">
+                    <h2>{ title }</h2>
+                </a>
+            </div>
+            { actionSection &&
+            <div className="hc-header__actions">
+                { actionSection }
+            </div>
+            }
+        </header>
     );
 };
 
-export default HCFooter;
+export default HCHeader;

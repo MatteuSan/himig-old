@@ -1414,6 +1414,18 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
+"@matteusan/himig-web@^0.1.0-beta.1":
+  version "0.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@matteusan/himig-web/-/himig-web-0.1.0-beta.1.tgz#de65ff820846d389cd939eb4e9ec9f6d26a6d1a5"
+  integrity sha512-qN8CixFVBmim2uN6DwXpr+RRAMIFLpyM030i2H8Q6Fnjp3WQNEUXM10Tu5ZZmD8f2Bxw6FqlqAdOI6uB7lLZUQ==
+  dependencies:
+    "@matteusan/sentro" "0.1.10"
+
+"@matteusan/sentro@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.10.tgz#27705324c9cf5a2e87928c318fd556d9a9dbb484"
+  integrity sha512-mLOeELvL1n13GngrkFFMcGV0pLhl8mno3kmsAhW7GbqXY5U3Q8esTmKGJo9ecksh9EooGXGWWimGf7sgZIi3KA==
+
 "@mui/icons-material@^5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.2.0.tgz#6c6135bb2d7891e29d6f9419df402b82dd663517"

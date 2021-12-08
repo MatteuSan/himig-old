@@ -19,4 +19,26 @@
 //  SOFTWARE.
 //
 
-@forward 'footer-styles';
+@use 'style-simple';
+@use 'style-playful';
+
+@use 'sass:list';
+
+$_valid-styles: ('simple', 'playful');
+
+@mixin init($style, $colors: (), $shapes: (), $tokens...) {
+    @if _is-style($style) {
+        @if $style == 'simple' {
+            @include style-simple.use($colors, $shapes, $tokens...);
+        } @else if $style == 'playful' {
+            @include style-playful.use($colors, $shapes, $tokens...);
+        }
+    }
+}
+
+@function _is-style($query) {
+    @if not list.index($_valid-styles, $query) {
+        @error "Invalid style: #{$query}! Please select from one of the following valid styles: #{$_valid-styles}";
+    }
+    @return true;
+}
