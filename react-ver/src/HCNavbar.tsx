@@ -28,18 +28,28 @@ interface HCNavbarItemProps {
     link: string;
 }
 
-export const HCNavbar: React.FC = ({ children }) => {
+const HCNavbar: React.FC = ({ trigger, children }: any) => {
     return (
-        <nav className="hc-navbar">
+        <nav className={`hc-navbar${ trigger ? ' open' : '' }`}>
             { children }
         </nav>
     );
 };
 
-export const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) => {
+const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) => {
     return (
         <a href={ link }>
             <span className="hc-navbar__item">{ label || children }</span>
         </a>
     );
 }
+
+const HCNavbarTrigger: React.FC = ({ onClick, trigger }: any) => {
+    return (
+        <button className="hc-js-navbar__trigger material-icons" onClick={ onClick }>
+            { trigger ? 'close' : 'menu' }
+        </button>
+    );
+}
+
+export { HCNavbar, HCNavbarItem, HCNavbarTrigger }

@@ -29,9 +29,13 @@ $_valid-styles: ('simple', 'playful');
 @mixin init($style, $colors: (), $shapes: (), $tokens...) {
     @if _is-style($style) {
         @if $style == 'simple' {
-            @include style-simple.use($colors, $shapes, $tokens...);
+            @include style-simple.use($colors, $shapes, $tokens...) {
+                @content;
+            }
         } @else if $style == 'playful' {
-            @include style-playful.use($colors, $shapes, $tokens...);
+            @include style-playful.use($colors, $shapes, $tokens...) {
+                @content;
+            }
         }
     }
 }

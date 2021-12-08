@@ -21,24 +21,28 @@
  *
  */
 
-import HCButton from "./HCButton";
-import HCCard from "./HCCard";
-import HCFooter from "./HCFooter";
-import HCHeader from "./HCHeader";
-import HCHero from "./HCHero";
-import { HCNavbar, HCNavbarItem, HCNavbarTrigger } from "./HCNavbar";
-import HCTag from "./HCTag";
-import HCTitleBar from "./HCTitleBar";
+import React from 'react';
 
-export {
-    HCButton,
-    HCCard,
-    HCFooter,
-    HCHeader,
-    HCHero,
-    HCNavbar,
-    HCNavbarItem,
-    HCNavbarTrigger,
-    HCTag,
-    HCTitleBar
+interface HCHeroProps {
+    title: string;
+    subtitle: string;
+    action?: any;
 }
+
+const HCHero: React.FC<HCHeroProps> = ({ title, subtitle, action }) => {
+    return (
+        <section className="hc-hero">
+            <div className="hc-hero__wrap">
+                <h2>{ title }</h2>
+                <p>{ subtitle }</p>
+                { action &&
+                <div className="hc-hero__actions">
+                    { action }
+                </div>
+                }
+            </div>
+        </section>
+    );
+};
+
+export default HCHero;
