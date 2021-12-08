@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@matteusan/himig-web@^0.1.0-beta.1":
-  version "0.1.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@matteusan/himig-web/-/himig-web-0.1.0-beta.1.tgz#de65ff820846d389cd939eb4e9ec9f6d26a6d1a5"
-  integrity sha512-qN8CixFVBmim2uN6DwXpr+RRAMIFLpyM030i2H8Q6Fnjp3WQNEUXM10Tu5ZZmD8f2Bxw6FqlqAdOI6uB7lLZUQ==
+"@matteusan/himig-web@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@matteusan/himig-web/-/himig-web-0.1.0.tgz#51ce55bdbd693c44e126e79a73a98aab0545f5a3"
+  integrity sha512-jL968zB/ReEXhkePGrxcRmlWLZBip4BUxu5VAnN//FvB8zZrDxQGtd0KDlaFzCF8IUVyoIGqnyuiSBE2JsZ8WQ==
   dependencies:
     "@matteusan/sentro" "0.1.10"
 
