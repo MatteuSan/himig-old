@@ -24,7 +24,6 @@
 import HCButton from "./HCButton";
 import HCCard from "./HCCard";
 import HCFooter from "./HCFooter";
-import HCInit from "./HCInit";
 import HCTag from "./HCTag";
 import HCTitleBar from "./HCTitleBar";
 
@@ -32,7 +31,6 @@ export default {
     HCButton,
     HCCard,
     HCFooter,
-    HCInit,
     HCTag,
     HCTitleBar
 }
