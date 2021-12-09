@@ -89,6 +89,7 @@ $navbar-breakpoint: 'medium' !default;
             background-color: hc-core.theme-key-create('navbar-item-fill', rgba(0 0 0 /0));
             color: hc-core.theme-key-create('navbar-item-ink', inherit);
             border: 1px solid hc-core.theme-key-create('navbar-item-border', rgba(0 0 0 / 0));
+            @include hc-core.tools-prefix(transition, all 0.1s ease);
             
             * {
                 text-decoration: none !important;
@@ -108,6 +109,14 @@ $navbar-breakpoint: 'medium' !default;
                     @include hc-core.theme-key-bind('navbar-item-border', rgba(0 0 0 / 0));
                 }
             }
+            
+            @include hc-core.helper-breakpoint($navbar-breakpoint) {
+                &:active {
+                    @include hc-core.theme-key-bind('navbar-item-fill', rgba(255 255 255 / 13%));
+                    @include hc-core.theme-key-bind('navbar-item-border', rgba(255 255 255 / 10%));
+                }
+            }
+            
         }
     }
 }

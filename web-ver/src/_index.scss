@@ -27,22 +27,39 @@
 
 $_init-colors: (
     'background': (#101010, #fff),
-    'surface': (#343434, #fff),
-    'accent': (#ff6a00, #1d0c02),
-    'accent-inverted': (#210c00, #ff6a00)
+    'surface': ((#454545, #343434, #232323), #fff),
+    'accent': ((#ffa040, #ff6a00, #903a00), #1d0c02),
+    'accent-gradient': linear-gradient(45deg, #c43e00 0%, #ffa040 100%)
 );
 
 $_init-shapes: (
     'radius': (0.3rem, 0.5rem, 0.7rem)
 );
 
+$_init-types: (
+    'global': (
+        family: ('Inter', sans-serif),
+        weight: 400,
+    ),
+    'title': (
+        family: ('Bebas Neue', sans-serif),
+        weight: normal,
+    ),
+    'subtitle': (
+        family: ('Inter', sans-serif),
+        weight: 700,
+    ),
+);
+
 @mixin init(
     $colors: (),
     $shapes: (),
+    $types: (),
     $user-tokens...
 ) {
     $_merged-colors: map.merge($_init-colors, $colors);
     $_merged-shapes: map.merge($_init-shapes, $shapes);
+    $_merged-types: map.merge($_init-types, $types);
     
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
@@ -55,31 +72,30 @@ $_init-shapes: (
                 'ink': list.nth(map.get($_merged-colors, 'background'), 2)
             ),
             $surface: (
-                'default': hc-core.color-split(list.nth(map.get($_merged-colors, 'surface'), 1)),
+                'default': hc-core.color-get-split(list.nth(map.get($_merged-colors, 'surface'), 1)),
                 'ink': list.nth(map.get($_merged-colors, 'surface'), 2)
             ),
             $accent: (
-                'default': hc-core.color-split(list.nth(map.get($_merged-colors, 'accent'), 1)),
+                'default': hc-core.color-get-split(list.nth(map.get($_merged-colors, 'accent'), 1)),
                 'ink': list.nth(map.get($_merged-colors, 'accent'), 2),
-                'gradient': linear-gradient(45deg, 0% #{hc-core.theme-token-get('accent-dark')}, 100%, #{hc-core.theme-token-get('accent-light')})
-            ),
-            $accent-inverted: (
-                'default': hc-core.color-split(list.nth(map.get($_merged-colors, 'accent-inverted'), 1)),
-                'ink': list.nth(map.get($_merged-colors, 'accent-inverted'), 2),
-                'gradient': linear-gradient(45deg, 0% #{hc-core.theme-token-get('accent-inverted-dark')}, 100%, #{hc-core.theme-token-get('accent-inverted-light')})
+                'gradient': map.get($_merged-colors, 'accent-gradient')
             ),
             $radius: (
                 'small': list.nth(map.get($_merged-shapes, 'radius'), 1),
-                'medium': list.nth(map.get($_merged-shapes, 'radius'), 1),
-                'large': list.nth(map.get($_merged-shapes, 'radius'), 1)
+                'medium': list.nth(map.get($_merged-shapes, 'radius'), 2),
+                'large': list.nth(map.get($_merged-shapes, 'radius'), 3)
             ),
             $global: (
-                'family': ('Inter', sans-serif),
-                'weight': 400
+                'family': map.get(map.get($_merged-types, 'global'), 'family'),
+                'weight': map.get(map.get($_merged-types, 'global'), 'weight')
             ),
             $title: (
-                'family': ('Bebas Neue', sans-serif),
-                'weight': normal
+                'family': map.get(map.get($_merged-types, 'title'), 'family'),
+                'weight': map.get(map.get($_merged-types, 'title'), 'weight')
+            ),
+            $subtitle: (
+                'family': map.get(map.get($_merged-types, 'subtitle'), 'family'),
+                'weight': map.get(map.get($_merged-types, 'subtitle'), 'weight')
             ),
             $user-tokens...
         );

@@ -36,7 +36,7 @@ $button-border-active: $button-fill-active !default;
 $button-border-disabled: $button-fill-disabled !default;
 
 $button-shadow: 'accent-dark' !default;
-$button-shadow-disabled: #441800 !default;
+$button-shadow-disabled: #5c2408 !default;
 
 $button-radius: 'radius-small' !default;
 $button-label-size: hc-core.tools-px-to-rem(16px) !default;
@@ -143,18 +143,6 @@ $button-style: 'simple' !default;
                 text-align: left;
             }
         
-            // Variants
-            &.hc-button--inverted {
-                @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-get('accent-inverted'));
-                @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-get('accent-inverted-ink'));
-                @include hc-core.theme-key-bind('button-border', hc-core.theme-token-get('accent-inverted'));
-                
-                &:active {
-                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-get('accent-inverted-light'));
-                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-get('accent-inverted-light'));
-                }
-            }
-        
             &.hc-button--outlined {
                 background: hc-core.theme-key-create('button-fill', rgba(0 0 0 / 0));
                 color: hc-core.theme-key-create('button-ink', hc-core.theme-token-switch('color', $button-fill));
@@ -163,9 +151,15 @@ $button-style: 'simple' !default;
                 @if $button-style == 'playful' {
                     box-shadow: 0 3px hc-core.theme-key-create('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
                 }
-            
-                &:hover,
+    
                 &:focus {
+                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', rgba(255 255 255 / 10%)));
+                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill));
+                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border));
+                    @include hc-core.theme-key-bind('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                }
+            
+                &:hover {
                     @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill));
                     @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-ink));
                     @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border));
@@ -251,6 +245,11 @@ $button-style: 'simple' !default;
                         }
                     }
                 }
+            }
+            
+            &.hc-button--full-width {
+                min-width: 100% !important;
+                max-width: 100% !important;
             }
         }
         

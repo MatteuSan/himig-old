@@ -1,3 +1,26 @@
+<!--
+  ~
+  ~  Copyright (c) 2021 Matteu
+  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~  of this software and associated documentation files (the "Software"), to deal
+  ~  in the Software without restriction, including without limitation the rights
+  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~  copies of the Software, and to permit persons to whom the Software is
+  ~  furnished to do so, subject to the following conditions:
+  ~
+  ~  The above copyright notice and this permission notice shall be included in all
+  ~  copies or substantial portions of the Software.
+  ~
+  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~  SOFTWARE.
+  ~
+  -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +29,14 @@
     <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
-<header class="hc-header">
+<header class="hc-header hc-header--scrollable scrolled">
     <div class="hc-header__brand">
         <a href="#">
             <h2>Header</h2>
         </a>
     </div>
     <div class="hc-header__actions">
+        <button class="hc-js-navbar__trigger material-icons">menu</button>
         <nav class="hc-navbar">
             <a href="#">
                 <span class="hc-navbar__item">Home</span>
@@ -29,12 +53,22 @@
         </nav>
     </div>
 </header>
-
+<section class="hc-hero">
+    <div class="hc-hero__wrap">
+        <h2>{ title || site.name }</h2>
+        <p>{ subtitle || `UX Engineer. Creating a meaningful bridge from software to user.` }</p>
+        <div class="hc-hero__actions">
+            <button class="hc-button hc-button--filled" role="button">
+                <span class="hc-button__label">Button</span>
+            </button>
+        </div>
+    </div>
+</section>
 <main style="width: calc(100% - 30px); max-width: 1077px; margin: 0 auto; padding: 65px 0 25px 0;">
     <button class="hc-button" role="button">
         <span class="hc-button__label">Button</span>
     </button>
-    <button class="hc-button hc-button--outlined" role="button">
+    <button class="hc-button hc-button--outlined hc-button--inverted" role="button">
         <span class="hc-button__label">Button</span>
     </button>
     <button class="hc-button hc-button--filled" role="button">
@@ -51,11 +85,42 @@
         <span class="hc-button__label">Button</span>
     </button>
 
-    <section style="max-width: 320px; margin: 1rem auto;">
-        <div class="hc-title-bar">
-            <h2 class="hc-title-bar__title">
-                Title Bar
-            </h2>
+    <div class="hc-title-bar">
+        <h2 class="hc-title-bar__title">
+            Title Bar
+        </h2>
+    </div>
+
+    <section class="grid">
+        <div class="hc-card">
+            <div class="hc-card__media">
+                <img src="https://www.matteusan.me/img/purplecress.png" alt="Card Media"/>
+            </div>
+            <div class="hc-card__content">
+                <div>
+                    <div class="hc-card__title">
+                        <h2>Lorem Title :)</h2>
+                    </div>
+                    <div class="hc-card__tags">
+                        <a href="#">
+                            <span class="hc-tag">Hello</span>
+                        </a>
+                        <span class="hc-tag">Hello</span>
+                        <span class="hc-tag">Hello</span>
+                        <span class="hc-tag">Hello</span>
+                        <span class="hc-tag">Hello</span>
+                    </div>
+                    <p class="hc-card__subtitle">Lorem ipsum <a href="#" class="hc-button--link">dolor</a> sit amet, consectetur adipisicing elit. Facere, quod.</p>
+                </div>
+                <div class="hc-card__actions">
+                    <button class="hc-button hc-button--outlined" role="button" disabled>
+                        <span class="hc-button__label">Button</span>
+                    </button>
+                    <button class="hc-button hc-button--filled" role="button">
+                        <span class="hc-button__label">Button</span>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="hc-card">
             <div class="hc-card__media">
@@ -87,6 +152,9 @@
                 </div>
             </div>
         </div>
+        <button class="hc-button hc-button--outlined hc-button--full-width" role="button">
+            <span class="hc-button__label">Button</span>
+        </button>
     </section>
 </main>
 

@@ -25,7 +25,7 @@ import React, { Component } from 'react';
 
 interface HCHeaderProps {
     title: string;
-    actionSection?: Component;
+    actionSection?: any;
     isScrollable?: boolean;
 }
 

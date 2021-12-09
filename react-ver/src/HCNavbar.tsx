@@ -23,12 +23,21 @@
 
 import React from 'react';
 
+interface HCNavBarProps {
+    trigger: boolean;
+}
+
 interface HCNavbarItemProps {
     label?: string;
     link: string;
 }
 
-const HCNavbar: React.FC = ({ trigger, children }: any) => {
+interface HCNavBarTriggerProps {
+    onClick: any;
+    trigger: boolean;
+}
+
+const HCNavbar: React.FC<HCNavBarProps> = ({ trigger, children }) => {
     return (
         <nav className={`hc-navbar${ trigger ? ' open' : '' }`}>
             { children }
@@ -44,7 +53,7 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
     );
 }
 
-const HCNavbarTrigger: React.FC = ({ onClick, trigger }: any) => {
+const HCNavbarTrigger: React.FC<HCNavBarTriggerProps> = ({ onClick, trigger }) => {
     return (
         <button className="hc-js-navbar__trigger material-icons" onClick={ onClick }>
             { trigger ? 'close' : 'menu' }

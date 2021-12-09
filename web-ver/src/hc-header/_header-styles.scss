@@ -56,12 +56,12 @@ $header-style: 'default' !default;
             &.hc-header--scrollable {
                 background-color: hc-core.theme-key-create('header-fill', hc-core.theme-token-switch('color', $header-un-scrolled-fill));
                 color: hc-core.theme-key-create('header-ink', hc-core.theme-token-switch('color', $header-un-scrolled-ink));
-                border: 1px solid hc-core.theme-key-create('header-ink', hc-core.theme-token-switch('color', $header-un-scrolled-border));
+                border: 1px solid hc-core.theme-key-create('header-border', hc-core.theme-token-switch('color', $header-un-scrolled-border));
                 
                 &.scrolled {
                     @include hc-core.theme-key-bind('header-fill', hc-core.theme-token-switch('color', $header-fill));
-                    @include hc-core.theme-key-bind('header-ink', hc-core.theme-key-create('header-ink', hc-core.theme-token-switch('color', $header-ink)));
-                    @include hc-core.theme-key-bind('header-border', hc-core.theme-key-create('header-border', hc-core.theme-token-switch('color', $header-border)));
+                    @include hc-core.theme-key-bind('header-ink', hc-core.theme-token-switch('color', $header-ink));
+                    @include hc-core.theme-key-bind('header-border', hc-core.theme-token-switch('color', $header-border));
                 }
             }
         }

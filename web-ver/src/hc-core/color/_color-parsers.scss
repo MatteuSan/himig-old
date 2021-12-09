@@ -20,11 +20,12 @@
 //
 
 @use 'color-utils';
+@use 'sass:list';
 
-@function split($color) {
+@function get-split($colors) {
     @return (
-        'light': color-utils.tint($color, 30%),
-        'default': $color,
-        'dark': color-utils.shade($color, 45%),
+        'light': list.nth($colors, 1),
+        'default': list.nth($colors, 2),
+        'dark': list.nth($colors, 3),
     );
 }
