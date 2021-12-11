@@ -1,5 +1,5 @@
 {
-  "name": "@matteusan/himig-react",
+  "name": "@matteu-san/himig-react",
   "version": "0.1.2",
   "description": "MatteuSan's personal design system's react implementation.",
   "main": "index.js",
@@ -8,6 +8,6 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@matteusan/himig-web": "0.1.0"
+    "@matteu-san/himig-web": "0.1.2"
   }
 }

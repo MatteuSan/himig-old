@@ -1,9 +1,9 @@
 {
-  "name": "@matteusan/himig-react",
+  "name": "@matteu-san/himig-react",
   "version": "0.1.2",
   "private": true,
   "dependencies": {
-    "@matteusan/himig-web": "0.1.0",
+    "@matteu-san/himig-web": "0.1.2",
     "@mui/icons-material": "5.2.0",
     "@testing-library/jest-dom": "5.15.0",
     "@testing-library/react": "11.2.7",
