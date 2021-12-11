@@ -105,15 +105,15 @@ $navbar-breakpoint: 'medium' !default;
                 @include hc-core.theme-key-bind('navbar-item-border', hc-core.theme-token-switch('color', $navbar-border));
                 
                 @include hc-core.helper-breakpoint($navbar-breakpoint) {
-                    @include hc-core.theme-key-bind('navbar-item-fill', rgba(255 255 255 / 10%));
+                    @include hc-core.theme-key-bind('navbar-item-fill', rgba(#fff, 25%));
                     @include hc-core.theme-key-bind('navbar-item-border', rgba(0 0 0 / 0));
                 }
             }
             
             @include hc-core.helper-breakpoint($navbar-breakpoint) {
                 &:active {
-                    @include hc-core.theme-key-bind('navbar-item-fill', rgba(255 255 255 / 13%));
-                    @include hc-core.theme-key-bind('navbar-item-border', rgba(255 255 255 / 10%));
+                    @include hc-core.theme-key-bind('navbar-item-fill', rgba(#fff, 30%));
+                    @include hc-core.theme-key-bind('navbar-item-border', rgba(#fff, 30%));
                 }
             }
             

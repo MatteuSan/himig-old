@@ -49,6 +49,7 @@ $footer-copyright-size: hc-core.tools-px-to-rem(14px) !default;
             }
             
             .hc-footer__version {
+                margin-left: 0.2rem;
                 font-size: hc-core.theme-key-create('footer-version-size', hc-core.theme-token-switch('number', $footer-version-size));
             }
         }
