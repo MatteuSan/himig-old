@@ -28,7 +28,7 @@ interface HCButtonProps {
     icon?: string;
     iconTrailing?: string;
     type?: string;
-    link?: string|null;
+    link?: string | null;
     isDisabled?: boolean;
 }
 
@@ -36,25 +36,26 @@ const HCButton: React.FC<HCButtonProps> = ({ label, icon, iconTrailing, type, li
     if (!link) {
         return (
             <HCButtonBase
-                label={label}
-                icon={icon}
-                iconTrailing={icon}
-                type={type}
-                isDisabled={isDisabled}
+                label={ label }
+                icon={ icon }
+                iconTrailing={ iconTrailing }
+                type={ type }
+                isDisabled={ isDisabled }
             >{ children }
             </HCButtonBase>
         );
     }
 
     return (
-        <a href={ link }>
+        <a href={ link }
+           target={ link.substring(1, 8) == 'https://' || link.substring(1, 7) == 'http://' ? '_blank' : undefined }>
             <HCButtonBase
-                label={label}
-                icon={icon}
-                iconTrailing={icon}
-                type={type}
-                link={link}
-                isDisabled={isDisabled}
+                label={ label }
+                icon={ icon }
+                iconTrailing={ iconTrailing }
+                type={ type }
+                link={ link }
+                isDisabled={ isDisabled }
             >{ children }
             </HCButtonBase>
         </a>
@@ -63,7 +64,9 @@ const HCButton: React.FC<HCButtonProps> = ({ label, icon, iconTrailing, type, li
 
 const HCButtonBase: React.FC<HCButtonProps> = ({ label, icon, iconTrailing, type, isDisabled, children }) => {
     return (
-        <button className={ `hc-button${ type?.includes('outlined') ? ' hc-button--outlined' : type?.includes('filled') ? ' hc-button--filled' : '' }${ type?.includes('inverted') ? ' hc-button--inverted' : '' }${ isDisabled ? ' disabled' : '' }` } disabled={isDisabled}>
+        <button
+            className={ `hc-button${ type?.includes('outlined') ? ' hc-button--outlined' : type?.includes('filled') ? ' hc-button--filled' : '' }${ type?.includes('inverted') ? ' hc-button--inverted' : '' }${ isDisabled ? ' disabled' : '' }` }
+            disabled={ isDisabled }>
             { icon && <i className="hc-button__icon material-icons">{ icon }</i> }
             { label || children && <span className="hc-button__label">{ label || children }</span> }
             { iconTrailing && <i className="hc-button__icon material-icons">{ iconTrailing }</i> }
