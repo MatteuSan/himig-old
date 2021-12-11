@@ -23,7 +23,7 @@
 
 import React from 'react';
 
-interface HCTitleBarProps {
+type HCTitleBarProps = {
     title?: string;
     icon?: string;
 }

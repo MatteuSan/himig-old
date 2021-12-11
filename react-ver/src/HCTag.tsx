@@ -23,7 +23,7 @@
 
 import React from 'react';
 
-interface MSCTagProps {
+type MSCTagProps = {
     label?: string
 }
 

@@ -23,7 +23,7 @@
 
 import React from 'react';
 
-interface HCButtonProps {
+type HCButtonProps = {
     label?: string;
     icon?: string;
     iconTrailing?: string;

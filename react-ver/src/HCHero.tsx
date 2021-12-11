@@ -23,7 +23,7 @@
 
 import React from 'react';
 
-interface HCHeroProps {
+type HCHeroProps = {
     title: string;
     subtitle: string;
     action?: any;

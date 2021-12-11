@@ -23,16 +23,16 @@
 
 import React from 'react';
 
-interface HCNavBarProps {
+type HCNavBarProps = {
     trigger: boolean;
 }
 
-interface HCNavbarItemProps {
+type HCNavbarItemProps = {
     label?: string;
     link: string;
 }
 
-interface HCNavBarTriggerProps {
+type HCNavBarTriggerProps = {
     onClick: any;
     trigger: boolean;
 }

@@ -23,7 +23,7 @@
 
 import React from 'react';
 
-interface HCFooterProps {
+type HCFooterProps = {
     title: string;
     version?: string|number;
     author?: string;

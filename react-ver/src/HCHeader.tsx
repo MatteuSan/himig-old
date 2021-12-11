@@ -23,7 +23,7 @@
 
 import React from 'react';
 
-interface HCHeaderProps {
+type HCHeaderProps = {
     title: string;
     actionSection?: any;
     isScrollable?: boolean;

@@ -24,7 +24,7 @@
 import React from 'react';
 import HCTag from "./HCTag";
 
-interface HCCardProps {
+type HCCardProps = {
     title: string;
     icon?: string;
     description?: string;
