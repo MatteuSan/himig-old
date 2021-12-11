@@ -467,14 +467,14 @@ a.hc-button--link:hover {
 }
 @media (min-width: 540px) {
   .hc-navbar .hc-navbar__item:hover {
-    --hc-navbar-item-fill: rgba(255, 255, 255, 0.1);
+    --hc-navbar-item-fill: rgba(255, 255, 255, 0.25);
     --hc-navbar-item-border: rgba(0, 0, 0, 0);
   }
 }
 @media (min-width: 540px) {
   .hc-navbar .hc-navbar__item:active {
-    --hc-navbar-item-fill: rgba(255, 255, 255, 0.13);
-    --hc-navbar-item-border: rgba(255, 255, 255, 0.1);
+    --hc-navbar-item-fill: rgba(255, 255, 255, 0.3);
+    --hc-navbar-item-border: rgba(255, 255, 255, 0.3);
   }
 }
 
