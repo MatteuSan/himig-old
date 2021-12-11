@@ -1,13 +1,22 @@
 {
-  "name": "@matteu-san/himig-web",
-  "version": "0.1.2",
-  "description": "MatteuSan's personal design system's web implementation.",
-  "main": "index.js",
-  "repository": "https://github.com/MatteuSan/himig",
-  "author": "Matteu",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "@matteu-san/sentro": "0.1.10"
-  }
+    "name": "@matteu-san/himig-web",
+    "version": "0.1.2",
+    "description": "MatteuSan's personal design system's web implementation.",
+    "main": "index.js",
+    "repository": "https://github.com/MatteuSan/himig",
+    "author": "Matteu",
+    "license": "MIT",
+    "private": false,
+    "dependencies": {
+        "@matteu-san/sentro": "0.1.10"
+    },
+    "keywords": [
+        "css",
+        "scss",
+        "frontend",
+        "front-end",
+        "design-system",
+        "library",
+        "framework"
+    ]
 }

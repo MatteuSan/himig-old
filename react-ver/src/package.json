@@ -9,5 +9,16 @@
   "private": false,
   "dependencies": {
     "@matteu-san/himig-web": "0.1.2"
-  }
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "typescript",
+    "design-system",
+    "component",
+    "components",
+    "component-library",
+    "library",
+    "framework"
+  ]
 }
