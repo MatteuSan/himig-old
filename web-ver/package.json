@@ -1,6 +1,6 @@
 {
-    "name": "@matteu-san/himig-web",
-    "version": "0.1.3",
+    "name": "himig-web",
+    "version": "0.1.4",
     "description": "MatteuSan's personal design system implementation.",
     "main": "index.js",
     "repository": "https://github.com/MatteuSan/himig",
@@ -8,7 +8,7 @@
     "license": "MIT",
     "private": false,
     "dependencies": {
-        "@matteu-san/sentro": "0.1.10"
+        "@matteusan/sentro": "0.1.12"
     },
     "scripts": {
         "build:sass": "gulp"
