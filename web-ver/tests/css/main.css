@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 :root {
   color-scheme: dark;
   --hc-theme-background: #101010;
@@ -18,8 +17,8 @@
   --hc-theme-radius-large: 0.7rem;
   --hc-theme-global-family: Inter, sans-serif;
   --hc-theme-global-weight: 400;
-  --hc-theme-title-family: Bebas Neue, sans-serif;
-  --hc-theme-title-weight: normal;
+  --hc-theme-title-family: Some Other Family, sans-serif;
+  --hc-theme-title-weight: 400;
   --hc-theme-subtitle-family: Inter, sans-serif;
   --hc-theme-subtitle-weight: 700;
   --hc-theme-accent-inverted-light: #401d00;

@@ -29,12 +29,18 @@
 @use '../../src/hc-title-bar';
 
 @include himig.init(
+    $types: (
+        'title': (
+            family: ('Some Other Family', sans-serif),
+            weight: 400
+        )
+    ),
     $accent-inverted: (
         'light': #401d00,
         'default': #210c00,
         'dark': #100500,
         'ink': #ff6a00,
-    )
+    ),
 ) {
     @include hc-button.use();
     @include hc-card.use();
