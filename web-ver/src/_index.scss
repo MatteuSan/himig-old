@@ -51,6 +51,8 @@ $_init-types: (
     ),
 );
 
+$background-color: 'background' !default;
+
 @mixin init(
     $colors: (),
     $shapes: (),
@@ -61,8 +63,14 @@ $_init-types: (
     $_merged-shapes: map.merge($_init-shapes, $shapes);
     $_merged-types: map.merge($_init-types, $types);
     
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    @if map.get(map.get($_merged-types, 'global'), 'family') == ('Inter', sans-serif)
+        or map.get(map.get($_merged-types, 'subtitle'), 'family') == ('Inter', sans-serif) {
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    }
+    
+    @if map.get(map.get($_merged-types, 'title'), 'family') == ('Bebas Neue', sans-serif) {
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    }
     
     :root {
         color-scheme: dark;
@@ -136,8 +144,8 @@ $_init-types: (
     }
     
     body {
-        background: hc-core.theme-token-get('background');
-        color: hc-core.theme-token-get('background-ink');
+        background: hc-core.theme-token-get('#{$background-color}');
+        color: hc-core.theme-token-get('#{$background-color}-ink');
     }
     
     @content;

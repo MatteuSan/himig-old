@@ -19,7 +19,7 @@
 //  SOFTWARE.
 //
 
-@use 'node_modules/@matteu-san/sentro' with ($prefix: 'hc', $context: 'theme');
+@use 'node_modules/@matteusan/sentro' with ($prefix: 'hc', $context: 'theme');
 
 @forward 'theme-sentro-wrapper';
 @forward 'theme-token-switch' as token-*;
