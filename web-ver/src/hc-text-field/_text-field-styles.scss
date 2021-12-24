@@ -92,10 +92,15 @@ $text-field-helper-ink: 'surface-ink' !default;
                     pointer-events: none;
                 }
             }
+            
+            &[type='color'] {
+                min-height: 54px;
+            }
         }
         
         .hc-text-field__helper {
             margin-top: 7px;
+            padding: 0 0.4rem;
             color: hc-core.theme-key-create('text-field-helper-ink', hc-core.theme-token-switch('color', $text-field-helper-ink));
             font-size: hc-core.theme-key-create('text-field-helper-size', hc-core.theme-token-switch('number', $text-field-helper-size));
         }
