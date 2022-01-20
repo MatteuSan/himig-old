@@ -29,9 +29,9 @@ $title-bar-radius: 'radius-small' !default;
 $title-bar-padding: 0.6rem 0 0 0 !default;
 $title-bar-gap: 0.4rem !default;
 
-$title-bar-size: hc-core.tools-px-to-rem(26px) !default;
+$title-bar-size: hc-core.px-to-rem(26px) !default;
 
-$title-bar-icon-size: hc-core.tools-px-to-rem(30px) !default;
+$title-bar-icon-size: hc-core.px-to-rem(30px) !default;
 $title-bar-icon-ink: 'accent' !default;
 
 @mixin use() {
@@ -39,23 +39,23 @@ $title-bar-icon-ink: 'accent' !default;
         display: flex;
         flex-flow: row nowrap;
         margin: 1rem 0 0 0;
-        padding: hc-core.theme-key-create('title-bar-radius', hc-core.theme-token-switch('list', $title-bar-padding));
-        background-color: hc-core.theme-key-create('title-bar-fill', hc-core.theme-token-switch('color', $title-bar-fill));
-        color: hc-core.theme-key-create('title-bar-ink', hc-core.theme-token-switch('color', $title-bar-ink));
-        border-radius: hc-core.theme-key-create('title-bar-radius', hc-core.theme-token-switch('number', $title-bar-radius));
+        padding: hc-core.key-create('title-bar-radius', hc-core.token-switch($title-bar-padding));
+        background-color: hc-core.key-create('title-bar-fill', hc-core.token-switch($title-bar-fill));
+        color: hc-core.key-create('title-bar-ink', hc-core.token-switch($title-bar-ink));
+        border-radius: hc-core.key-create('title-bar-radius', hc-core.token-switch($title-bar-radius));
         
         & > * + * {
-            margin-left: hc-core.theme-key-create('title-bar-gap', $title-bar-gap);
+            margin-left: hc-core.key-create('title-bar-gap', $title-bar-gap);
         }
         
         .hc-title-bar__icon {
-            font-size: hc-core.theme-key-create('title-bar-icon-size', $title-bar-icon-size);
-            color: hc-core.theme-key-create('title-bar-icon-ink', hc-core.theme-token-switch('color', $title-bar-icon-ink));
+            font-size: hc-core.key-create('title-bar-icon-size', $title-bar-icon-size);
+            color: hc-core.key-create('title-bar-icon-ink', hc-core.token-switch($title-bar-icon-ink));
             user-select: none;
         }
         
         .hc-title-bar__title {
-            font-size: hc-core.theme-key-create('title-bar-size', $title-bar-size);
+            font-size: hc-core.key-create('title-bar-size', $title-bar-size);
         }
     }
 }

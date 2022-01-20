@@ -31,6 +31,7 @@ $navbar-item-border: $navbar-item-fill !default;
 $navbar-item-radius: 'radius-small' !default;
 
 $navbar-breakpoint: 'medium' !default;
+$navbar-gap: 0.4rem !default;
 
 @mixin use() {
     .hc-js-navbar__trigger {
@@ -54,27 +55,45 @@ $navbar-breakpoint: 'medium' !default;
         
         z-index: 90;
         
-        background-color: hc-core.theme-key-create('navbar-fill', hc-core.theme-token-switch('color', $navbar-fill));
-        color: hc-core.theme-key-create('navbar-ink', hc-core.theme-token-switch('color', $navbar-ink));
-        border: 1px solid hc-core.theme-key-create('navbar-border', hc-core.theme-token-switch('color', $navbar-border));
+        background-color: hc-core.key-create('navbar-fill', hc-core.token-switch($navbar-fill));
+        color: hc-core.key-create('navbar-ink', hc-core.token-switch($navbar-ink));
+        border: 1px solid hc-core.key-create('navbar-border', hc-core.token-switch($navbar-border));
+    
+        @include hc-core.helper-breakpoint($navbar-breakpoint) {
+            width: 100%;
+            display: block !important;
+            position: relative;
+            color: inherit;
+            @include hc-core.key-bind('navbar-fill', rgba(0 0 0 / 0));
+            @include hc-core.key-bind('navbar-border', rgba(0 0 0 / 0));
+        }
         
         &.open {
-            display: flex;
-            flex-flow: column nowrap;
-            @include hc-core.tools-elevation(4);
-            
-            & > * + * {
-                margin-top: 0.7rem;
+            display: block;
+            @include hc-core.elevation(4);
+    
+            @include hc-core.helper-breakpoint($navbar-breakpoint) {
+                box-shadow: none !important;
+                padding: 0 !important;
             }
         }
         
-        @include hc-core.helper-breakpoint($navbar-breakpoint) {
-            width: 100%;
-            display: flex !important;
-            position: relative;
-            color: inherit;
-            @include hc-core.theme-key-bind('navbar-fill', rgba(0 0 0 / 0));
-            @include hc-core.theme-key-bind('navbar-border', rgba(0 0 0 / 0));
+        .hc-navbar__wrapper {
+            display: flex;
+            flex-flow: column nowrap;
+            
+            & > * + * {
+                margin-top: hc-core.token-switch($navbar-gap);
+            }
+    
+            @include hc-core.helper-breakpoint($navbar-breakpoint) {
+                flex-flow: row nowrap;
+                
+                & > * + * {
+                    margin-top: 0;
+                    margin-left: hc-core.token-switch($navbar-gap);
+                }
+            }
         }
         
         a {
@@ -82,38 +101,44 @@ $navbar-breakpoint: 'medium' !default;
         }
         
         .hc-navbar__item {
+            width: 100%;
             padding: 0.6rem 0.8rem;
+            border-radius: hc-core.key-create('navbar-item-radius', hc-core.token-switch($navbar-item-radius));
+            background-color: hc-core.key-create('navbar-item-fill', rgba(0 0 0 /0));
+            color: hc-core.key-create('navbar-item-ink', inherit);
+            border: 1px solid hc-core.key-create('navbar-item-border', rgba(0 0 0 / 0));
+            @include hc-core.prefix(transition, all 0.1s ease);
             cursor: pointer;
             user-select: none;
-            border-radius: hc-core.theme-key-create('navbar-item-radius', hc-core.theme-token-switch('number', $navbar-item-radius));
-            background-color: hc-core.theme-key-create('navbar-item-fill', rgba(0 0 0 /0));
-            color: hc-core.theme-key-create('navbar-item-ink', inherit);
-            border: 1px solid hc-core.theme-key-create('navbar-item-border', rgba(0 0 0 / 0));
-            @include hc-core.tools-prefix(transition, all 0.1s ease);
-            
-            * {
-                text-decoration: none !important;
-            }
+            list-style: none;
             
             &.active {
                 font-weight: 700;
             }
             
+            * {
+                font-size: inherit;
+                font-weight: inherit;
+                line-height: inherit;
+                text-decoration: none !important;
+            }
+            
+            
             &:hover {
-                @include hc-core.theme-key-bind('navbar-item-fill', hc-core.theme-token-switch('color', $navbar-item-fill));
-                @include hc-core.theme-key-bind('navbar-item-ink', hc-core.theme-token-switch('color', $navbar-item-ink));
-                @include hc-core.theme-key-bind('navbar-item-border', hc-core.theme-token-switch('color', $navbar-border));
+                @include hc-core.key-bind('navbar-item-fill', hc-core.token-switch($navbar-item-fill));
+                @include hc-core.key-bind('navbar-item-ink', hc-core.token-switch($navbar-item-ink));
+                @include hc-core.key-bind('navbar-item-border', hc-core.token-switch($navbar-border));
                 
                 @include hc-core.helper-breakpoint($navbar-breakpoint) {
-                    @include hc-core.theme-key-bind('navbar-item-fill', rgba(#fff, 25%));
-                    @include hc-core.theme-key-bind('navbar-item-border', rgba(0 0 0 / 0));
+                    @include hc-core.key-bind('navbar-item-fill', rgba(#fff, 25%));
+                    @include hc-core.key-bind('navbar-item-border', rgba(#fff, 2.5%));
                 }
             }
             
             @include hc-core.helper-breakpoint($navbar-breakpoint) {
                 &:active {
-                    @include hc-core.theme-key-bind('navbar-item-fill', rgba(#fff, 30%));
-                    @include hc-core.theme-key-bind('navbar-item-border', rgba(#fff, 30%));
+                    @include hc-core.key-bind('navbar-item-fill', rgba(#fff, 30%));
+                    @include hc-core.key-bind('navbar-item-border', rgba(#fff, 3%));
                 }
             }
             

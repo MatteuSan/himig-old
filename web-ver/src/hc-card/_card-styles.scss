@@ -27,11 +27,11 @@ $card-radius: 'radius-medium' !default;
 
 $card-shadow: 'surface-dark' !default;
 
-$card-title-size: hc-core.tools-px-to-rem(26px) !default;
+$card-title-size: hc-core.px-to-rem(26px) !default;
 $card-title-icon-ink: 'accent' !default;
-$card-title-icon-size: hc-core.tools-px-to-rem(22px) !default;
+$card-title-icon-size: hc-core.px-to-rem(22px) !default;
 
-$card-subtitle-size: hc-core.tools-px-to-rem(15px) !default;
+$card-subtitle-size: hc-core.px-to-rem(15px) !default;
 
 $card-style: 'simple' !default;
 
@@ -44,11 +44,11 @@ $card-style: 'simple' !default;
             width: 100%;
             margin: 0;
             border: none !important;
-            border-radius: hc-core.theme-key-create('card-radius', hc-core.theme-token-switch('number', $card-radius));
-            @include hc-core.tools-prefix(transition, all 0.1s ease);
+            border-radius: hc-core.key-create('card-radius', hc-core.token-switch($card-radius));
+            @include hc-core.prefix(transition, all 0.1s ease);
             
             @if $card-style == 'playful' {
-                box-shadow: 0 3px hc-core.theme-key-create('card-shadow', hc-core.theme-token-switch('color', $card-shadow));
+                box-shadow: 0 3px hc-core.key-create('card-shadow', hc-core.token-switch($card-shadow));
                 
                 @include hc-core.helper-breakpoint('large') {
                     &:hover {
@@ -86,9 +86,9 @@ $card-style: 'simple' !default;
                 justify-content: space-between;
                 padding: 1rem;
                 overflow: hidden;
-                background-color: hc-core.theme-key-create('card-fill', hc-core.theme-token-switch('color', $card-fill));
-                color: hc-core.theme-key-create('card-ink', hc-core.theme-token-switch('color', $card-ink));
-                border-radius: 0 0 hc-core.theme-token-switch('number', $card-radius) hc-core.theme-token-switch('number', $card-radius);
+                background-color: hc-core.key-create('card-fill', hc-core.token-switch($card-fill));
+                color: hc-core.key-create('card-ink', hc-core.token-switch($card-ink));
+                border-radius: 0 0 hc-core.token-switch($card-radius) hc-core.token-switch($card-radius);
                 
                 .hc-card__title {
                     display: flex;
@@ -99,15 +99,15 @@ $card-style: 'simple' !default;
                     h2,
                     h3 {
                         color: inherit;
-                        font-size: hc-core.theme-key-create('card-title-text-size', $card-title-size);
+                        font-size: hc-core.key-create('card-title-text-size', $card-title-size);
                         line-height: 1.75rem;
                     }
                     
                     .hc-card__title__icon {
-                        font-size: hc-core.theme-key-create('card-title-icon-size', $card-title-icon-size);
+                        font-size: hc-core.key-create('card-title-icon-size', $card-title-icon-size);
                         margin-bottom: 0.175rem;
                         margin-right: 0.5rem;
-                        color: hc-core.theme-key-create('card-title-icon-ink', hc-core.theme-token-switch('color', $card-title-icon-ink));
+                        color: hc-core.key-create('card-title-icon-ink', hc-core.token-switch($card-title-icon-ink));
                         user-select: none;
                     }
                 }
@@ -128,7 +128,7 @@ $card-style: 'simple' !default;
                 }
                 
                 .hc-card__subtitle {
-                    font-size: hc-core.theme-key-create('card-subtitle-text-size', $card-subtitle-size);
+                    font-size: hc-core.key-create('card-subtitle-text-size', $card-subtitle-size);
                     color: inherit;
                     word-break: break-word;
                     overflow: hidden;

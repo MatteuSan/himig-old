@@ -26,7 +26,7 @@ $tag-ink: 'accent-ink' !default;
 $tag-border: $tag-fill !default;
 
 $tag-radius: 'radius-small' !default;
-$tag-size: hc-core.tools-px-to-rem(12px) !default;
+$tag-size: hc-core.px-to-rem(12px) !default;
 
 @mixin use() {
     .hc-tag {
@@ -35,25 +35,25 @@ $tag-size: hc-core.tools-px-to-rem(12px) !default;
         padding: 0.2rem 0.4rem;
         user-select: none;
         
-        background-color: hc-core.theme-key-create('tag-fill', hc-core.theme-token-switch('color', rgba(0 0 0 / 0)));
-        color: hc-core.theme-key-create('tag-ink', hc-core.theme-token-switch('color', $tag-fill));
-        border: 1px solid hc-core.theme-key-create('tag-border', hc-core.theme-token-switch('color', $tag-border));
+        background-color: hc-core.key-create('tag-fill', hc-core.token-switch(rgba(0 0 0 / 0)));
+        color: hc-core.key-create('tag-ink', hc-core.token-switch($tag-fill));
+        border: 1px solid hc-core.key-create('tag-border', hc-core.token-switch($tag-border));
         
-        border-radius: hc-core.theme-key-create('tag-radius', hc-core.theme-token-switch('number', $tag-radius));
+        border-radius: hc-core.key-create('tag-radius', hc-core.token-switch($tag-radius));
         
-        font-size: hc-core.theme-key-create('tag-size', $tag-size);
+        font-size: hc-core.key-create('tag-size', $tag-size);
     }
     
     a {
         text-decoration: none;
     
         & > .hc-tag {
-            @include hc-core.tools-prefix(transition, all 0.1s ease);
+            @include hc-core.prefix(transition, all 0.1s ease);
         
             &:hover {
-                @include hc-core.theme-key-bind('tag-fill', hc-core.theme-token-switch('color', $tag-fill));
-                @include hc-core.theme-key-bind('tag-ink', hc-core.theme-token-switch('color', $tag-ink));
-                @include hc-core.theme-key-bind('tag-border', hc-core.theme-token-switch('color', $tag-border));
+                @include hc-core.key-bind('tag-fill', hc-core.token-switch($tag-fill));
+                @include hc-core.key-bind('tag-ink', hc-core.token-switch($tag-ink));
+                @include hc-core.key-bind('tag-border', hc-core.token-switch($tag-border));
             }
         }
     }

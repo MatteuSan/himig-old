@@ -25,9 +25,9 @@ $footer-fill: 'surface' !default;
 $footer-ink: 'surface-ink' !default;
 $footer-border: $footer-fill !default;
 
-$footer-title-size: hc-core.tools-px-to-rem(28px) !default;
-$footer-version-size: hc-core.tools-px-to-rem(12px) !default;
-$footer-copyright-size: hc-core.tools-px-to-rem(14px) !default;
+$footer-title-size: hc-core.px-to-rem(28px) !default;
+$footer-version-size: hc-core.px-to-rem(12px) !default;
+$footer-copyright-size: hc-core.px-to-rem(14px) !default;
 
 @mixin use() {
     .hc-footer {
@@ -35,27 +35,27 @@ $footer-copyright-size: hc-core.tools-px-to-rem(14px) !default;
         place-items: center;
         width: 100%;
         padding: 1.2rem 0;
-        background-color: hc-core.theme-key-create('footer-fill', hc-core.theme-token-switch('color', $footer-fill));
-        color: hc-core.theme-key-create('footer-ink', hc-core.theme-token-switch('color', $footer-ink));
-        border: 1px solid hc-core.theme-key-create('footer-ink', hc-core.theme-token-switch('color', $footer-border));
+        background-color: hc-core.key-create('footer-fill', hc-core.token-switch($footer-fill));
+        color: hc-core.key-create('footer-ink', hc-core.token-switch($footer-ink));
+        border: 1px solid hc-core.key-create('footer-ink', hc-core.token-switch($footer-border));
         
         .hc-footer__title {
-            font-size: hc-core.theme-key-create('footer-title-size', hc-core.theme-token-switch('number', $footer-title-size));
+            font-size: hc-core.key-create('footer-title-size', hc-core.token-switch($footer-title-size));
             user-select: none;
-            @include hc-core.tools-prefix(transition, all 0.1s ease);
+            @include hc-core.prefix(transition, all 0.1s ease);
             
             &:hover {
-                color: hc-core.theme-token-get('accent');
+                color: hc-core.token-get('accent');
             }
             
             .hc-footer__version {
                 margin-left: 0.2rem;
-                font-size: hc-core.theme-key-create('footer-version-size', hc-core.theme-token-switch('number', $footer-version-size));
+                font-size: hc-core.key-create('footer-version-size', hc-core.token-switch($footer-version-size));
             }
         }
         
         .hc-footer__copyright {
-            font-size: hc-core.theme-key-create('footer-copyright-size', hc-core.theme-token-switch('number', $footer-copyright-size));
+            font-size: hc-core.key-create('footer-copyright-size', hc-core.token-switch($footer-copyright-size));
         }
     }
 }

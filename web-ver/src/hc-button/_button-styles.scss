@@ -36,11 +36,12 @@ $button-border-active: $button-fill-active !default;
 $button-border-disabled: $button-fill-disabled !default;
 
 $button-shadow: 'accent-dark' !default;
-$button-shadow-disabled: #5c2408 !default;
+$button-shadow-disabled: 'accent-dark' !default;
 
 $button-radius: 'radius-small' !default;
-$button-label-size: hc-core.tools-px-to-rem(16px) !default;
-$button-icon-size: hc-core.tools-px-to-rem(24px) !default;
+
+$button-label-size: hc-core.px-to-rem(16px) !default;
+$button-icon-size: hc-core.px-to-rem(24px) !default;
 $button-icon-ink: inherit !default;
 
 $button-style: 'simple' !default;
@@ -50,26 +51,26 @@ $button-style: 'simple' !default;
         .hc-button {
             width: 100%;
             min-width: 90px;
-            max-width: hc-core.theme-key-create('button-width', $button-width);
+            max-width: hc-core.key-create('button-width', hc-core.token-switch($button-width));
         
             display: inline-flex;
             flex-flow: row nowrap;
             justify-content: center;
             align-items: center;
         
-            padding: hc-core.theme-key-create('button-padding', $button-padding);
+            padding: hc-core.key-create('button-padding', hc-core.token-switch($button-padding));
             box-sizing: border-box;
-            @include hc-core.tools-prefix(transition, all 0.1s ease);
+            @include hc-core.prefix(transition, all 0.1s ease);
         
-            background: hc-core.theme-key-create('button-fill', rgba(0 0 0 / 0));
-            color: hc-core.theme-key-create('button-ink', hc-core.theme-token-switch('color', $button-fill));
-            border: 1px solid hc-core.theme-key-create('button-border', rgba(0 0 0 / 0));
+            background: hc-core.key-create('button-fill', rgba(0 0 0 / 0));
+            color: hc-core.key-create('button-ink', hc-core.token-switch($button-fill));
+            border: 1px solid hc-core.key-create('button-border', rgba(0 0 0 / 0));
             
             @if $button-style == 'playful' {
-                box-shadow: 0 3px hc-core.theme-key-create('button-shadow', rgba(0 0 0 / 0));
+                box-shadow: 0 3px hc-core.key-create('button-shadow', rgba(0 0 0 / 0));
             }
-        
-            border-radius: hc-core.theme-key-create('button-radius', hc-core.theme-token-switch('number', $button-radius));
+            
+            border-radius: hc-core.key-create('button-radius', hc-core.token-switch($button-radius));
         
             user-select: none;
             line-height: 1.25rem;
@@ -78,7 +79,7 @@ $button-style: 'simple' !default;
             cursor: pointer;
         
             & > * + * {
-                margin-left: hc-core.theme-key-create('button-gap', $button-gap);
+                margin-left: hc-core.key-create('button-gap', hc-core.token-switch($button-gap));
             }
         
             &::-moz-focus-inner {
@@ -88,37 +89,37 @@ $button-style: 'simple' !default;
             
             &:hover,
             &:focus {
-                @include hc-core.theme-key-bind('button-fill', rgba(255 255 255 / 10%));
+                @include hc-core.key-bind('button-fill', rgba(hc-core.token-get-raw($button-fill), 20%));
                 
                 @if $button-style == 'simple' {
-                    @include hc-core.theme-key-bind('button-border', rgba(255 255 255 / 1%));
+                    @include hc-core.key-bind('button-border', rgba(hc-core.token-get-raw($button-fill), 2%));
                 }
                 
                 @if $button-style == 'playful' {
-                    @include hc-core.theme-key-bind('button-border', rgba(255 255 255 / 10%));
-                    @include hc-core.theme-key-bind('button-shadow', rgba(255 255 255 / 23%));
+                    @include hc-core.key-bind('button-border', rgba(hc-core.token-get-raw($button-border), 20%));
+                    @include hc-core.key-bind('button-shadow', rgba(hc-core.token-get-raw($button-shadow), 33%));
                 }
             }
         
             &:active {
-                @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill-active));
+                @include hc-core.key-bind('button-ink', hc-core.token-switch($button-fill-active));
                 
                 @if $button-style == 'playful' {
-                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill-active));
+                    @include hc-core.key-bind('button-ink', hc-core.token-switch($button-fill-active));
                     transform: translateY(3px);
-                    box-shadow: 0 0 hc-core.theme-key-create('button-shadow', rgba(255 255 255 / 23%));
+                    box-shadow: 0 0 hc-core.key-create('button-shadow', rgba(hc-core.token-get-raw($button-shadow), 23%));
                 }
             }
             
             &:disabled,
             &.disabled {
-                @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill-disabled));
+                @include hc-core.key-bind('button-ink', hc-core.token-switch($button-fill-disabled));
                 cursor: default;
                 
                 &:hover {
-                    @include hc-core.theme-key-bind('button-fill', rgba(0 0 0 / 0));
-                    @include hc-core.theme-key-bind('button-border', rgba(0 0 0 / 0));
-                    @include hc-core.theme-key-bind('button-shadow', rgba(0 0 0 / 0));
+                    @include hc-core.key-bind('button-fill', rgba(0 0 0 / 0));
+                    @include hc-core.key-bind('button-border', rgba(0 0 0 / 0));
+                    @include hc-core.key-bind('button-shadow', rgba(0 0 0 / 0));
                 }
                 
                 &:active {
@@ -128,70 +129,70 @@ $button-style: 'simple' !default;
         
             .hc-button__icon {
                 position: relative;
-                font-size: hc-core.theme-key-create('button-icon-size', $button-icon-size);
-                color: hc-core.theme-key-create('button-icon-ink', $button-icon-ink);
+                font-size: hc-core.key-create('button-icon-size', hc-core.token-switch($button-icon-size));
+                color: hc-core.key-create('button-icon-ink', hc-core.token-switch($button-icon-ink));
                 /* @fallback */
-                width: hc-core.theme-key-create('button-icon-size', $button-icon-size);
-                height: hc-core.theme-key-create('button-icon-size', $button-icon-size);
+                width: hc-core.key-create('button-icon-size', hc-core.token-switch($button-icon-size));
+                height: hc-core.key-create('button-icon-size', hc-core.token-switch($button-icon-size));
             }
         
             .hc-button__label {
-                font-size: hc-core.theme-key-create('button-label-size', $button-label-size);
-                color: hc-core.theme-key-create('button-label-ink', inherit);
+                font-size: hc-core.key-create('button-label-size', hc-core.token-switch($button-label-size));
+                color: hc-core.key-create('button-label-ink', inherit);
                 line-height: inherit;
                 font-weight: 700;
                 text-align: left;
             }
         
             &.hc-button--outlined {
-                background: hc-core.theme-key-create('button-fill', rgba(0 0 0 / 0));
-                color: hc-core.theme-key-create('button-ink', hc-core.theme-token-switch('color', $button-fill));
-                border-color: hc-core.theme-key-create('button-border', hc-core.theme-token-switch('color', $button-border));
+                background: hc-core.key-create('button-fill', rgba(0 0 0 / 0));
+                color: hc-core.key-create('button-ink', hc-core.token-switch($button-fill));
+                border-color: hc-core.key-create('button-border', hc-core.token-switch($button-border));
                 
                 @if $button-style == 'playful' {
-                    box-shadow: 0 3px hc-core.theme-key-create('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                    box-shadow: 0 3px hc-core.key-create('button-shadow', hc-core.token-switch($button-shadow));
                 }
     
                 &:focus {
-                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', rgba(255 255 255 / 10%)));
-                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill));
-                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border));
-                    @include hc-core.theme-key-bind('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                    @include hc-core.key-bind('button-fill', hc-core.token-switch(rgba(hc-core.token-get-raw($button-fill), 20%)));
+                    @include hc-core.key-bind('button-ink', hc-core.token-switch($button-fill));
+                    @include hc-core.key-bind('button-border', hc-core.token-switch($button-border));
+                    @include hc-core.key-bind('button-shadow', hc-core.token-switch($button-shadow));
                 }
             
                 &:hover {
-                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill));
-                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-ink));
-                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border));
-                    @include hc-core.theme-key-bind('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                    @include hc-core.key-bind('button-fill', hc-core.token-switch($button-fill));
+                    @include hc-core.key-bind('button-ink', hc-core.token-switch($button-ink));
+                    @include hc-core.key-bind('button-border', hc-core.token-switch($button-border));
+                    @include hc-core.key-bind('button-shadow', hc-core.token-switch($button-shadow));
                 }
             
                 &:active {
-                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill-active));
-                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-ink));
-                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-active));
+                    @include hc-core.key-bind('button-fill', hc-core.token-switch($button-fill-active));
+                    @include hc-core.key-bind('button-ink', hc-core.token-switch($button-ink));
+                    @include hc-core.key-bind('button-border', hc-core.token-switch($button-border-active));
                     
                     @if $button-style == 'playful' {
-                        box-shadow: 0 0 hc-core.theme-key-create('button-shadow', $button-shadow);
+                        box-shadow: 0 0 hc-core.key-create('button-shadow', $button-shadow);
                         transform: translateY(2px);
                     }
                 }
             
                 &:disabled,
                 &.disabled {
-                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill-disabled));
-                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-disabled));
+                    @include hc-core.key-bind('button-ink', hc-core.token-switch($button-fill-disabled));
+                    @include hc-core.key-bind('button-border', hc-core.token-switch($button-border-disabled));
                     background: rgba(0 0 0 / 0);
                     
                     @if $button-style == 'playful' {
-                        @include hc-core.theme-key-bind('button-shadow', hc-core.theme-token-switch('color', $button-shadow-disabled));
+                        @include hc-core.key-bind('button-shadow', darken(hc-core.token-get-raw($button-shadow-disabled), 15%));
                     }
     
                     &:active {
-                        @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-disabled));
+                        @include hc-core.key-bind('button-border', hc-core.token-switch($button-border-disabled));
                         
                         @if $button-style == 'playful' {
-                            box-shadow: 0 3px hc-core.theme-key-create('button-shadow', hc-core.theme-token-switch('color', $button-shadow-disabled));
+                            box-shadow: 0 3px hc-core.key-create('button-shadow', hc-core.token-switch($button-shadow-disabled));
                             transform: none;
                         }
                     }
@@ -199,48 +200,48 @@ $button-style: 'simple' !default;
             }
         
             &.hc-button--filled {
-                background: hc-core.theme-key-create('button-fill', hc-core.theme-token-switch('color', $button-fill));
-                color: hc-core.theme-key-create('button-ink', hc-core.theme-token-switch('color', $button-ink));
-                border-color: hc-core.theme-key-create('button-border', hc-core.theme-token-switch('color', $button-border));
+                background: hc-core.key-create('button-fill', hc-core.token-switch($button-fill));
+                color: hc-core.key-create('button-ink', hc-core.token-switch($button-ink));
+                border-color: hc-core.key-create('button-border', hc-core.token-switch($button-border));
                 
                 @if $button-style == 'playful' {
-                    box-shadow: 0 3px hc-core.theme-key-create('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                    box-shadow: 0 3px hc-core.key-create('button-shadow', hc-core.token-switch($button-shadow));
                 }
                 
                 &:hover,
                 &:focus {
-                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill));
-                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-ink));
-                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border));
-                    @include hc-core.theme-key-bind('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                    @include hc-core.key-bind('button-fill', hc-core.token-switch($button-fill));
+                    @include hc-core.key-bind('button-ink', hc-core.token-switch($button-ink));
+                    @include hc-core.key-bind('button-border', hc-core.token-switch($button-border));
+                    @include hc-core.key-bind('button-shadow', hc-core.token-switch($button-shadow));
                 }
             
                 &:active {
-                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill-active));
-                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-ink));
-                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-active));
+                    @include hc-core.key-bind('button-fill', hc-core.token-switch($button-fill-active));
+                    @include hc-core.key-bind('button-ink', hc-core.token-switch($button-ink));
+                    @include hc-core.key-bind('button-border', hc-core.token-switch($button-border-active));
                     
                     @if $button-style == 'playful' {
-                        box-shadow: 0 0 hc-core.theme-key-create('button-shadow', hc-core.theme-token-switch('color', $button-shadow));
+                        box-shadow: 0 0 hc-core.key-create('button-shadow', hc-core.token-switch($button-shadow));
                         transform: translateY(2px);
                     }
                 }
             
                 &:disabled {
-                    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill-disabled));
-                    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-ink));
-                    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-disabled));
+                    @include hc-core.key-bind('button-fill', hc-core.token-switch($button-fill-disabled));
+                    @include hc-core.key-bind('button-ink', hc-core.token-switch($button-ink));
+                    @include hc-core.key-bind('button-border', hc-core.token-switch($button-border-disabled));
                     
                     @if $button-style == 'playful' {
-                        @include hc-core.theme-key-bind('button-shadow', hc-core.theme-token-switch('color', $button-shadow-disabled));
+                        @include hc-core.key-bind('button-shadow', darken(hc-core.token-get-raw($button-shadow-disabled), 15%));
                     }
                 
                     &:active {
-                        @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $button-fill-disabled));
-                        @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $button-border-disabled));
+                        @include hc-core.key-bind('button-fill', hc-core.token-switch($button-fill-disabled));
+                        @include hc-core.key-bind('button-border', hc-core.token-switch($button-border-disabled));
                         
                         @if $button-style == 'playful' {
-                            box-shadow: 0 3px hc-core.theme-key-create('button-shadow', hc-core.theme-token-switch('color', $button-shadow-disabled));
+                            box-shadow: 0 3px hc-core.key-create('button-shadow', hc-core.token-switch($button-shadow-disabled));
                             transform: none;
                         }
                     }
@@ -256,12 +257,12 @@ $button-style: 'simple' !default;
         a.hc-button--link {
             display: inline-block;
             line-height: 1.25rem;
-            color: hc-core.theme-key-create('button-ink', hc-core.theme-token-switch('color', $button-fill));
+            color: hc-core.key-create('button-ink', hc-core.token-switch($button-fill));
             text-decoration: underline;
-            @include hc-core.tools-prefix(transition, all 0.1s ease);
+            @include hc-core.prefix(transition, all 0.1s ease);
             
             &:hover {
-                @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $button-fill-active));
+                @include hc-core.key-bind('button-ink', hc-core.token-switch($button-fill-active));
                 
                 @if $button-style == 'playful' {
                     text-decoration-style: wavy;

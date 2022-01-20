@@ -27,11 +27,11 @@
     $border: $fill,
     $shadow: ()
 ) {
-    @include hc-core.theme-key-bind('button-fill', hc-core.theme-token-switch('color', $fill));
-    @include hc-core.theme-key-bind('button-ink', hc-core.theme-token-switch('color', $ink));
-    @include hc-core.theme-key-bind('button-border', hc-core.theme-token-switch('color', $border));
+    @include hc-core.key-bind('button-fill', hc-core.token-switch($fill));
+    @include hc-core.key-bind('button-ink', hc-core.token-switch($ink));
+    @include hc-core.key-bind('button-border', hc-core.token-switch($border));
     
     @if not hc-core.is-empty($shadow) {
-        @include hc-core.theme-key-bind('button-shadow', hc-core.theme-token-switch('color', $shadow));
+        @include hc-core.key-bind('button-shadow', hc-core.token-switch($shadow));
     }
 }

@@ -28,8 +28,7 @@
 $_init-colors: (
     'background': (#101010, #fff),
     'surface': ((#454545, #343434, #232323), #fff),
-    'accent': ((#ffa040, #ff6a00, #903a00), #1d0c02),
-    'accent-gradient': linear-gradient(45deg, #c43e00 0%, #ffa040 100%)
+    'accent': ((#ffa040, #ff6a00, #903a00), #1d0c02)
 );
 
 $_init-shapes: (
@@ -74,7 +73,7 @@ $background-color: 'background' !default;
     
     :root {
         color-scheme: dark;
-        @include hc-core.theme-token-add(
+        @include hc-core.token-add(
             $background: (
                 'default': list.nth(map.get($_merged-colors, 'background'), 1),
                 'ink': list.nth(map.get($_merged-colors, 'background'), 2)
@@ -114,8 +113,8 @@ $background-color: 'background' !default;
         margin: 0;
         padding: 0;
         color: inherit;
-        font-family: hc-core.theme-token-get('global-family');
-        font-weight: hc-core.theme-token-get('global-weight');
+        font-family: hc-core.token-get('global-family');
+        font-weight: hc-core.token-get('global-weight');
         
         &::before,
         &::after {
@@ -123,16 +122,16 @@ $background-color: 'background' !default;
             margin: 0;
             padding: 0;
             color: inherit;
-            font-family: hc-core.theme-token-get('global-family');
-            font-weight: hc-core.theme-token-get('global-weight');
+            font-family: hc-core.token-get('global-family');
+            font-weight: hc-core.token-get('global-weight');
         }
     }
     
     h1,
     h2,
     h3 {
-        font-family: hc-core.theme-token-get('title-family');
-        font-weight: hc-core.theme-token-get('title-weight');
+        font-family: hc-core.token-get('title-family');
+        font-weight: hc-core.token-get('title-weight');
     }
     
     html {
@@ -144,8 +143,8 @@ $background-color: 'background' !default;
     }
     
     body {
-        background: hc-core.theme-token-get('#{$background-color}');
-        color: hc-core.theme-token-get('#{$background-color}-ink');
+        background: hc-core.token-get('#{$background-color}');
+        color: hc-core.token-get('#{$background-color}-ink');
     }
     
     @content;

@@ -21,9 +21,7 @@
 
 @forward 'color' as color-*;
 @forward 'helpers' as helper-*;
-@forward 'shape' as shape-*;
 @forward 'struct' as struct-*;
 @forward 'support';
-@forward 'theme' as theme-*;
-@forward 'tools' as tools-*;
-@forward 'typography' as typography-*;
+@forward 'theme';
+@forward 'tools';

@@ -21,9 +21,11 @@
 
 @use '../hc-core';
 
-$hero-fill: 'accent-gradient' !default;
+$hero-fill-start: 'accent-dark' !default;
+$hero-fill-end: 'accent' !default;
 $hero-ink: 'accent-ink' !default;
 
+$hero-width: 977px !default;
 $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
 
 @mixin use() {
@@ -38,27 +40,27 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
     
         clip-path: #{$hero-clip};
         
-        background: hc-core.theme-key-create('hero-fill', hc-core.theme-token-switch('color', $hero-fill));
-        color: hc-core.theme-key-create('hero-ink', hc-core.theme-token-switch('color', $hero-ink));
+        background: hc-core.key-create('hero-fill', linear-gradient(45deg, #{hc-core.token-get($hero-fill-start)} 0%, #{hc-core.token-get($hero-fill-end)} 100%));
+        color: hc-core.key-create('hero-ink', hc-core.token-switch($hero-ink));
     
         ::-moz-selection {
-            color: hc-core.theme-token-get('accent');
-            background: hc-core.theme-token-get('accent-ink');
+            color: hc-core.token-get('accent');
+            background: hc-core.token-get('accent-ink');
         }
     
         ::selection {
-            color: hc-core.theme-token-get('accent');
-            background: hc-core.theme-token-get('accent-ink');
+            color: hc-core.token-get('accent');
+            background: hc-core.token-get('accent-ink');
         }
         
         .hc-hero__wrap {
             width: calc(100% - 50px);
-            max-width: 977px;
+            max-width: hc-core.token-switch($hero-width);
             
             h1,
             h2,
             h3 {
-                font-size: hc-core.tools-px-to-rem(37px);
+                font-size: hc-core.px-to-rem(37px);
             }
             
             .hc-hero__actions {

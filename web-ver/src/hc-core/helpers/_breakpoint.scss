@@ -33,6 +33,10 @@ $breakpoints: (
     }
 }
 
+@mixin config($user-breakpoints) {
+    $breakpoints: map.merge($breakpoints, $user-breakpoints) !global;
+}
+
 @function _sanitize-breakpoint($query, $context: 'min') {
     @if not $context == 'min' or not $context == 'max' {
         @error 'Invalid context: #{$context}! Please select between min and max only!';

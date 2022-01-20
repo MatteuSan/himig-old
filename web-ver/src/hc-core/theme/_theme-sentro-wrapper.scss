@@ -33,6 +33,18 @@
     @include sentro.token-add($map, $tokens...);
 }
 
+@function token-check($query) {
+    @return sentro.token-check($query);
+}
+
+@function token-switch($query) {
+    @return sentro.token-switch($query);
+}
+
+@function token-get-raw($query) {
+    @return sentro.token-get-raw($query);
+}
+
 // ==== //
 // Keys //
 // ==== //
@@ -45,6 +57,14 @@
     @return sentro.key-create($key, $value);
 }
 
+@function key-check($query) {
+    @return sentro.key-check($query);
+}
+
 @mixin key-bind($key, $value) {
     @include sentro.key-bind($key, $value);
+}
+
+@function key-get-raw($query) {
+    @return sentro.key-get-raw($query);
 }

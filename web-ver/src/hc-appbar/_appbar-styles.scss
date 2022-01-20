@@ -29,8 +29,8 @@ $appbar-active-ink: 'accent-light' !default;
 
 $appbar-items: 4 !default;
 
-$appbar-icon-size: hc-core.tools-px-to-rem(24px) !default;
-$appbar-label-size: hc-core.tools-px-to-rem(12px) !default;
+$appbar-icon-size: hc-core.px-to-rem(24px) !default;
+$appbar-label-size: hc-core.px-to-rem(12px) !default;
 
 $appbar-gap: 0.7rem !default;
 $appbar-breakpoint: 'medium' !default;
@@ -42,7 +42,7 @@ $appbar-breakpoint: 'medium' !default;
         bottom: 0;
         left: 0;
         padding: 0.5rem 0.7rem;
-        background: hc-core.theme-key-create('appbar-fill', hc-core.theme-token-switch('color', $appbar-fill));
+        background: hc-core.key-create('appbar-fill', hc-core.token-switch($appbar-fill));
         
         @include hc-core.helper-breakpoint($appbar-breakpoint) {
             position: relative;
@@ -50,8 +50,8 @@ $appbar-breakpoint: 'medium' !default;
         
         ul {
             display: grid;
-            grid-template-columns: repeat(#{hc-core.theme-key-create('appbar-items', hc-core.theme-token-switch('number', $appbar-items))}, 1fr);
-            grid-gap: hc-core.theme-key-create('appbar-gap', hc-core.theme-token-switch('number', $appbar-gap));
+            grid-template-columns: repeat(#{hc-core.key-create('appbar-items', hc-core.token-switch($appbar-items))}, 1fr);
+            grid-gap: hc-core.key-create('appbar-gap', hc-core.token-switch($appbar-gap));
     
             @include hc-core.helper-breakpoint($appbar-breakpoint) {
                 grid-gap: calc(#{$appbar-gap} * 2);
@@ -59,11 +59,11 @@ $appbar-breakpoint: 'medium' !default;
         }
         
         .hc-appbar__item {
-            color: hc-core.theme-key-create('appbar-ink', hc-core.theme-token-switch('color', $appbar-ink));
+            color: hc-core.key-create('appbar-ink', hc-core.token-switch($appbar-ink));
             list-style: none;
     
             &.active {
-                color: hc-core.theme-key-create('appbar-active-ink', hc-core.theme-token-switch('color', $appbar-active-ink));
+                color: hc-core.key-create('appbar-active-ink', hc-core.token-switch($appbar-active-ink));
                 
                 .hc-appbar__label {
                     @include hc-core.helper-breakpoint($appbar-breakpoint) {
@@ -79,25 +79,25 @@ $appbar-breakpoint: 'medium' !default;
                 align-items: center;
                 
                 .hc-appbar__icon {
-                    width: hc-core.theme-key-create('appbar-icon-size', hc-core.theme-token-switch('number', $appbar-icon-size));
-                    height: hc-core.theme-key-create('appbar-icon-size', hc-core.theme-token-switch('number', $appbar-icon-size));
+                    width: hc-core.key-create('appbar-icon-size', hc-core.token-switch($appbar-icon-size));
+                    height: hc-core.key-create('appbar-icon-size', hc-core.token-switch($appbar-icon-size));
                     color: inherit;
-                    font-size: hc-core.theme-key-create('appbar-icon-size', hc-core.theme-token-switch('number', $appbar-icon-size));
+                    font-size: hc-core.key-create('appbar-icon-size', hc-core.token-switch($appbar-icon-size));
     
                     @include hc-core.helper-breakpoint($appbar-breakpoint) {
                         $appbar-gap: 0.2rem;
-                        margin-right: hc-core.theme-key-create('appbar-gap', hc-core.theme-token-switch('number', $appbar-gap));
+                        margin-right: hc-core.key-create('appbar-gap', hc-core.token-switch($appbar-gap));
                     }
                     
                     > svg {
-                        width: hc-core.theme-key-create('appbar-icon-size', hc-core.theme-token-switch('number', $appbar-icon-size));
-                        height: hc-core.theme-key-create('appbar-icon-size', hc-core.theme-token-switch('number', $appbar-icon-size));
+                        width: hc-core.key-create('appbar-icon-size', hc-core.token-switch($appbar-icon-size));
+                        height: hc-core.key-create('appbar-icon-size', hc-core.token-switch($appbar-icon-size));
                     }
                 }
                 
                 .hc-appbar__label {
                     color: inherit;
-                    font-size: hc-core.theme-key-create('appbar-label-size', hc-core.theme-token-switch('number', $appbar-label-size));
+                    font-size: hc-core.key-create('appbar-label-size', hc-core.token-switch($appbar-label-size));
     
                     @include hc-core.helper-breakpoint($appbar-breakpoint) {
                         display: none;

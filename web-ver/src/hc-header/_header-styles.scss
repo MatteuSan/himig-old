@@ -29,7 +29,7 @@ $header-un-scrolled-fill: rgba(0 0 0 / 0) !default;
 $header-un-scrolled-ink: 'accent-ink' !default;
 $header-un-scrolled-border: $header-un-scrolled-fill !default;
 
-$header-size: hc-core.tools-px-to-rem(26px) !default;
+$header-size: hc-core.px-to-rem(26px) !default;
 
 $header-style: 'default' !default;
 // $header-breakpoint: 'medium' !default;
@@ -46,22 +46,22 @@ $header-style: 'default' !default;
         left: 0;
         padding: 0.6em 1.2em;
         z-index: 100;
-        @include hc-core.tools-prefix(transition, all 0.1s ease);
+        @include hc-core.prefix(transition, all 0.1s ease);
         
-        background-color: hc-core.theme-key-create('header-fill', hc-core.theme-token-switch('color', $header-fill));
-        color: hc-core.theme-key-create('header-ink', hc-core.theme-token-switch('color', $header-ink));
-        border: 1px solid hc-core.theme-key-create('header-border', hc-core.theme-token-switch('color', $header-border));
+        background-color: hc-core.key-create('header-fill', hc-core.token-switch($header-fill));
+        color: hc-core.key-create('header-ink', hc-core.token-switch($header-ink));
+        border: 1px solid hc-core.key-create('header-border', hc-core.token-switch($header-border));
         
         @if $header-style == 'scrollable' {
             &.hc-header--scrollable {
-                background-color: hc-core.theme-key-create('header-fill', hc-core.theme-token-switch('color', $header-un-scrolled-fill));
-                color: hc-core.theme-key-create('header-ink', hc-core.theme-token-switch('color', $header-un-scrolled-ink));
-                border: 1px solid hc-core.theme-key-create('header-border', hc-core.theme-token-switch('color', $header-un-scrolled-border));
+                background-color: hc-core.key-create('header-fill', hc-core.token-switch($header-un-scrolled-fill));
+                color: hc-core.key-create('header-ink', hc-core.token-switch($header-un-scrolled-ink));
+                border: 1px solid hc-core.key-create('header-border', hc-core.token-switch($header-un-scrolled-border));
                 
                 &.scrolled {
-                    @include hc-core.theme-key-bind('header-fill', hc-core.theme-token-switch('color', $header-fill));
-                    @include hc-core.theme-key-bind('header-ink', hc-core.theme-token-switch('color', $header-ink));
-                    @include hc-core.theme-key-bind('header-border', hc-core.theme-token-switch('color', $header-border));
+                    @include hc-core.key-bind('header-fill', hc-core.token-switch($header-fill));
+                    @include hc-core.key-bind('header-ink', hc-core.token-switch($header-ink));
+                    @include hc-core.key-bind('header-border', hc-core.token-switch($header-border));
                 }
             }
         }
@@ -74,7 +74,7 @@ $header-style: 'default' !default;
             h1,
             h2,
             h3 {
-                font-size: hc-core.theme-key-create('header-size', hc-core.theme-token-switch('number', $header-size));
+                font-size: hc-core.key-create('header-size', hc-core.token-switch($header-size));
                 user-select: none;
                 color: inherit;
             }

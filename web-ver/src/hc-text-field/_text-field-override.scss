@@ -19,3 +19,29 @@
 //  SOFTWARE.
 //
 
+  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//
+
+@use '../hc-core';
+
+@mixin override(
+    $fill,
+    $ink,
+    $border: $fill,
+    $shadow: ()
+) {
+    @include hc-core.key-bind('text-field-fill', hc-core.token-switch($fill));
+    @include hc-core.key-bind('text-field-ink', hc-core.token-switch($ink));
+    @include hc-core.key-bind('text-field-border', hc-core.token-switch($border));
+    
+    @if not hc-core.is-empty($shadow) {
+        @include hc-core.key-bind('text-field-shadow', hc-core.token-switch($shadow));
+    }
+}

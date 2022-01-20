@@ -27,11 +27,11 @@
     $border: $fill,
     $shadow: ()
 ) {
-    @include hc-core.theme-key-bind('title-bar-fill', hc-core.theme-token-switch('color', $fill));
-    @include hc-core.theme-key-bind('title-bar-ink', hc-core.theme-token-switch('color', $ink));
-    @include hc-core.theme-key-bind('title-bar-border', hc-core.theme-token-switch('color', $border));
+    @include hc-core.key-bind('title-bar-fill', hc-core.token-switch($fill));
+    @include hc-core.key-bind('title-bar-ink', hc-core.token-switch($ink));
+    @include hc-core.key-bind('title-bar-border', hc-core.token-switch($border));
     
     @if not hc-core.is-empty($shadow) {
-        @include hc-core.theme-key-bind('title-bar-shadow', hc-core.theme-token-switch('color', $shadow));
+        @include hc-core.key-bind('title-bar-shadow', hc-core.token-switch($shadow));
     }
 }

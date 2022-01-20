@@ -2,14 +2,14 @@
 # yarn lockfile v1
 
 
-"@matteusan/himig-web@0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@matteusan/himig-web/-/himig-web-0.1.3.tgz#de8c82cc121f6dc533ffb8a3d6b607f558c5c674"
-  integrity sha512-U7bu9GA7h8SjsDV8kPBHBDK7eFHDh8rTCDwreGlTKFjGA6MZ4boKtdQcVNxQoCEPpeAyYrh4TpgUNqg3go7vJg==
+"@matteusan/himig-web@0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@matteusan/himig-web/-/himig-web-0.1.6.tgz#569066d7db846e9450c44c8d4dedc0102a05a65d"
+  integrity sha512-xffillRSiiE0DiFBnnL/jFi/LykGzlzYUD5H2jjcLS8YtvUj8hRe1YdpWe1lk8XTVT3MBlolMiTiot1gL4qi1w==
   dependencies:
-    "@matteusan/sentro" "0.1.12"
+    "@matteusan/sentro" "0.1.17"
 
-"@matteusan/sentro@0.1.12":
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.12.tgz#4d5cf8df261b42f94bc7fe40ea49d376ea89177a"
-  integrity sha512-xsC7usEW/IJtiFt1jSjKy8bGIWN6sTQ8YDauUoaqVwbnCMZX689SDgZNWYm9K6YppgihAlRq2U9gIKeHYRZjPw==
+"@matteusan/sentro@0.1.17":
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.17.tgz#1564e3287989a09691db35888cb6ad828c52d0c8"
+  integrity sha512-kn3S3HlbYbjSBzlUfSFDWceoIQKLMVrH8lmthbTKgYb5up2GGa5vuaqlzOBAYRRtCNUOOoPI91bSml9CmQjCvA==

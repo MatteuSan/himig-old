@@ -25,29 +25,20 @@
 @use '../../src/hc-header' with ($header-style: 'scrollable');
 @use '../../src/hc-hero';
 @use '../../src/hc-navbar';
-@use '../../src/hc-tags';
+@use '../../src/hc-tag';
 @use '../../src/hc-title-bar';
 
 @include himig.init(
-    $types: (
-        'title': (
-            family: ('Some Other Family', sans-serif),
-            weight: 400
-        )
-    ),
-    $accent-inverted: (
-        'light': #401d00,
-        'default': #210c00,
-        'dark': #100500,
-        'ink': #ff6a00,
-    ),
+    $colors: (
+        'accent': ((#84a6ee, #4067c1, #133486), #fff)
+    )
 ) {
     @include hc-button.use();
     @include hc-card.use();
     @include hc-header.use();
     @include hc-hero.use();
     @include hc-navbar.use();
-    @include hc-tags.use();
+    @include hc-tag.use();
     @include hc-title-bar.use();
     
     .hc-button.hc-button--inverted {
